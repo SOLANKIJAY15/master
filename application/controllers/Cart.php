@@ -19,7 +19,7 @@ class Cart extends CI_Controller {
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
 	public function crt()
-	{
+	{	
 		$this->load->view('cart.php');
 	}
 	

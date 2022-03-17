@@ -30,11 +30,11 @@
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="<?php echo $base.'/assets/lib/slick/slick.css';?>" rel="stylesheet">
-        <link href="<?php echo $base.'/assets/lib/slick/slick-theme.css';?>" rel="stylesheet">
+        <link href="<?php echo $base.'/assets/lib/slick/slick.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
+        <link href="<?php echo $base.'/assets/lib/slick/slick-theme.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="<?php echo $base.'/assets/css/style.css';?>" rel="stylesheet">
+        <link href="<?php echo $base.'/assets/css/style.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
     </head>
 
     <body>
