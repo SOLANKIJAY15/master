@@ -44,11 +44,12 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <i class="fa fa-envelope"></i>
-                        himanshumakwana3110@gmail.com
+                        <a href="himanshumakwana3110@gmail.com">
+                        himanshumakwana3110@gmail.com</a>
                     </div>
                     <div class="col-sm-6">
                         <i class="fa fa-phone-alt"></i>
-                        +91 7566244671
+                        <a href="tel:+91 7566244671">+91 7566244671</a>
                     </div>
                 </div>
             </div>
