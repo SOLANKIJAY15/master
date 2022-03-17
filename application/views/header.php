@@ -51,12 +51,12 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <i class="fa fa-envelope"></i>
-                        <a href="himanshumakwana3110@gmail.com">
+                        <a href="himanshumakwana3110@gmail.com" style="color:white;">
                         himanshumakwana3110@gmail.com</a>
                     </div>
                     <div class="col-sm-6">
                         <i class="fa fa-phone-alt"></i>
-                        <a href="tel:+91 7566244671">+91 7566244671</a>
+                        <a href="tel:+91 7566244671" style="color:white;">+91 7566244671</a>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,8 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
-                            <a href="<?php echo $base.'Dashboard/index';?>" class="nav-item nav-link active">Home</a>
+                            <a href="<?php echo $base.'Dashboard/index';?>" class="nav-item nav-link">Home</a>
+                            <a href="<?php echo $base.'Brand/brands';?>" class="nav-item nav-link">Brands</a>
                             <a href="<?php echo $base.'Product_list/pro_list';?>" class="nav-item nav-link">Products</a>
                             <a href="<?php echo $base.'Product_details/pro_detail';?>" class="nav-item nav-link">Product Detail</a>
                             <a href="<?php echo $base.'Cart/crt';?>" class="nav-item nav-link">Cart</a>
@@ -137,3 +138,4 @@
             </div>
         </div>
         <!-- Bottom Bar End -->       
+
