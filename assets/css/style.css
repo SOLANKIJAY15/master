@@ -1386,7 +1386,8 @@ h2 {
 
 .sidebar-widget.brands ul li span {
     display: inline-block;
-    float: right;
+  
+    /* float: right; */
     color: #666666;
     font-size: 14px;
     font-weight: 400;
@@ -1634,7 +1635,7 @@ h2 {
 
 .wishlist-page .wishlist-page-inner {
     padding: 30px;
-    background: #ffffff;
+    background: #fafafa;
 }
 
 .wishlist-page .table {
@@ -1648,6 +1649,7 @@ h2 {
     font-size: 18px;
     font-weight: 700;
     color: #353535;
+
     text-align: center;
     background: transparent;
     border-color: #dddddd;
@@ -1711,6 +1713,7 @@ h2 {
     height: 30px;
     font-size: 16px;
     color: #ffffff;
+    font-weight:bold ;
     text-align: center;
     background: #000000;
     border: none;
@@ -1849,6 +1852,7 @@ h2 {
 .my-account .tab-content .table {
     width: 100%;
     text-align: center;
+  
     margin-bottom: 0;
 }
 
