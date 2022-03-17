@@ -35,6 +35,7 @@
 
         <!-- Template Stylesheet -->
         <link href="<?php echo $base.'/assets/css/style.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
+        <link href="<?php echo $base.'/assets/css/login.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
     </head>
 
     <body>
