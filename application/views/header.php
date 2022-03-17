@@ -36,6 +36,12 @@
         <!-- Template Stylesheet -->
         <link href="<?php echo $base.'/assets/css/style.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
         <link href="<?php echo $base.'/assets/css/login.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
+        <link href="<?php echo $base.'/assets/css/register.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
+        <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -88,7 +94,7 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                                 <div class="dropdown-menu">
                                     <a href="<?php echo $base.'Login/userlogin';?>"  class="dropdown-item">Login</a>
-                                    <a href="<?php echo $base.'Login/userlogin';?>"  class="dropdown-item">Register</a>
+                                    <a href="<?php echo $base.'User_Register/register';?>"  class="dropdown-item">Register</a>
                                 </div>
                             </div>
                         </div>
