@@ -2,8 +2,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User_Register extends CI_Controller {
-
+class User_Register extends CI_Controller 
+{
+	
 	/**
 	 * Index Page for this controller.
 	 *
@@ -23,7 +24,34 @@ class User_Register extends CI_Controller {
 	{
 		$this->load->view('register.php');
 	}
+	public function register1()
+	{
+		$this->load->view('register1.php');
+	}
+	public function add_register()
+	{
+		$this->load->model('RegisterModel');
+
+		//load registration view form
+		
+		// echo "inn";    print_r($_POST);
+        //     exit;
+        
+		// echo "inn";    print_r($_POST);
+		// exit;
+		//  WITHOUT FORM VALIDATION
+        if(isset($_POST['save'])){ 	
+            $formArray=array();
+            $this->RegisterModel->add_register($_POST);
+            $this->session->set_flashdata('sucess','yes');
+            redirect(base_url().'index.php/Dashboard/index');
+		}
+		else{
+			
+		}
 	
+	}
+
+
 }
-
-
+?>

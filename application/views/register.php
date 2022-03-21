@@ -1,6 +1,7 @@
 <?php 
 include("header.php");
 ?>
+
 <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
@@ -9,7 +10,7 @@ include("header.php");
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
             <!-- REGISTER FORM START -->
-            <form>
+            <form action="<?php echo base_url().'RegisterModel/add_register'; ?>" method="post"> 
             <br><br>
             <!-- FIRST NAME LAST NAME INPUT -->
             <div class="row">
@@ -132,7 +133,7 @@ include("header.php");
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
-" class="btn">Submit</button>
+" class="btn" name="save">Submit</button>
 
             </form>
           </div>

@@ -22,6 +22,21 @@ class Dashboard extends CI_Controller {
 	{
 		$this->load->view('index.php');
 	}
+	public function db()
+	{
+		//load the database  
+		$conn=$this->load->database();
+		// if($conn)
+		// {
+		// 	echo "yes";
+
+		// }
+		// else
+		// {
+		// 	echo "no";
+		// }
+	}
+	
 	
 }
 
