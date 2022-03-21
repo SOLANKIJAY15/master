@@ -6,8 +6,8 @@
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?php echo $base.'Dashboard/index';?>">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="<?php echo $base.'Product_details/pro_detail';?>">Product Detail</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo $base.'index.php/Dashboard/index';?>">Home</a></li>
+                    <li class="breadcrumb-item active"><a href="<?php echo $base.'index.php/Product_details/pro_detail';?>">Product Detail</a></li>
                 </ul>
             </div>
         </div>

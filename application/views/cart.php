@@ -7,9 +7,9 @@ include("header.php");
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?php echo $base.'/Dashboard/index'; ?>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo $base.'index.php/Dashboard/index'; ?>">Home</a></li>
                     
-                    <li class="breadcrumb-item active"><a href="<?php echo $base.'/Cart/crt'; ?>">Cart</a></li>
+                    <li class="breadcrumb-item active"><a href="<?php echo $base.'index.php/Cart/crt'; ?>">Cart</a></li>
                 </ul>
             </div>
         </div>

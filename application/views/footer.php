@@ -14,7 +14,7 @@
                     <div class="contact-info">
                         <p><i class="fa fa-map-marker"></i>Ahemdabad,Gujarat,INDIA</p>
                         <p><i class="fa fa-envelope"></i>himanshumakwana3110@gmail.com</p>
-                        <p><i class="fa fa-envelope"></i>jaysolanki934@gmail.com.com</p>
+                        <p><i class="fa fa-envelope"></i>jaysolanki934@gmail.com</p>
                         <p><i class="fa fa-phone"></i>+91 7566244671</p>
                     </div>
                 </div>
