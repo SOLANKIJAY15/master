@@ -1,147 +1,113 @@
-<?php 
-include("header.php");
-?>
-<section class="vh-100 gradient-custom">
-  <div class="container py-5 h-100">
-    <div class="row justify-content-center align-items-center h-100">
-      <div class="col-12 col-lg-9 col-xl-7">
-        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-          <div class="card-body p-4 p-md-5">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-            <!-- REGISTER FORM START -->
-            <form>
-            <br><br>
-            <!-- FIRST NAME LAST NAME INPUT -->
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                        <label class="form-label">First Name</label>
-                        <input type="text" class="form-control form-control-lg" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <?php $base=$this->config->item("base_url"); ?>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Material Dash</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="<?php echo $base.'assets/vendors/mdi/css/materialdesignicons.min.css';?>">
+  <link rel="stylesheet" href="<?php echo $base.'assets/vendors/css/vendor.bundle.base.css';?>">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="<?php echo $base.'assets/css/demo/style.css';?>">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="<?php echo $base.'assets/images/favicon.png';?>">
+</head>
+<body>
+<script src="<?php echo $base.'assets/js/preloader.js';?>"></script>
+  <div class="body-wrapper">
+    <div class="main-wrapper">
+      <div class="page-wrapper full-page-wrapper d-flex align-items-center justify-content-center">
+        <main class="auth-page">
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
+                <div class="mdc-card">
+                  <form>
+                    <div class="mdc-layout-grid">
+                      <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-text-field w-100">
+                            <input class="mdc-text-field__input" id="text-field-hero-input">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">Username</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-text-field w-100">
+                            <input class="mdc-text-field__input" id="text-field-hero-input">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">Email</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100">
+                            <input class="mdc-text-field__input" id="text-field-hero-input">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">Password</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100">
+                            <input class="mdc-text-field__input" type="password" id="text-field-hero-input">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">Password again</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-form-field">
+                            <div class="mdc-checkbox">
+                              <input type="checkbox"
+                                      class="mdc-checkbox__native-control"
+                                      id="checkbox-1"/>
+                              <div class="mdc-checkbox__background">
+                                <svg class="mdc-checkbox__checkmark"
+                                      viewBox="0 0 24 24">
+                                  <path class="mdc-checkbox__checkmark-path"
+                                        fill="none"
+                                        d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                </svg>
+                                <div class="mdc-checkbox__mixedmark"></div>
+                              </div>
+                            </div>
+                            <label for="checkbox-1">Remember me</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop d-flex align-items-center justify-content-end">
+                          <a href="#">Forgot Password</a>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <a href="<?php echo $base.' ';?>" class="mdc-button mdc-button--raised w-100">
+                            Register
+                          </a>
+                        </div>
+                      </div>
                     </div>
+                  </form>
                 </div>
-                <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                        <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control form-control-lg" />
-                    </div>
-                </div>
+              </div>
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-4 d-flex align-items-center">
-                    <div class="form-outline datepicker w-100">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control form-control-lg" />
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                        <label class="form-label" >password</label>
-                        <input type="password" class="form-control form-control-lg" />
-                  </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-4 pb-2">
-                    <div class="form-outline">
-                        <label class="form-label" >Conform password</label>
-                        <input type="password" class="form-control form-control-lg" />
-                  </div>
-                </div>
-                <div class="col-md-6 mb-4 pb-2">
-                    <div class="form-outline">
-                        <label class="form-label">Upload image</label>    
-                        <input class="form-control form-control-lg"  type="file" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-4 pb-2">
-                    <div class="form-outline">
-                        <label class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control form-control-lg" />
-                  </div>
-                </div>
-                
-                <div class="col-md-6 mb-4 pb-2">
-                    <div class="form-group">
-                        <label class="form-label">Country</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <select class="form-control" >
-                                <option value="1" disabled>Choose option</option>
-                                <option value="2">Subject 1</option>
-                                <option value="3">Subject 2</option>
-                                <option value="4">Subject 3</option>
-                            </select>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-            <div class="col-md-6 mb-4 pb-2">
-                    <div class="form-group">
-                        <label class="form-label">State</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <select class="form-control" >
-                                <option value="1" disabled>Choose option</option>
-                                <option value="2">Subject 1</option>
-                                <option value="3">Subject 2</option>
-                                <option value="4">Subject 3</option>
-                            </select>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4 pb-2">
-                    <div class="form-group">
-                        <label class="form-label">City</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <select class="form-control" >
-                                <option value="1" disabled>Choose option</option>
-                                <option value="2">Subject 1</option>
-                                <option value="3">Subject 2</option>
-                                <option value="4">Subject 3</option>
-                            </select>
-                    </div>
-                </div>
-            </div>
-              
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                        <input type="text" class="form-control form-control-lg" />
-                        <label class="form-label">Street Address</label>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                        <input type="number" class="form-control form-control-lg" />
-                        <label class="form-label" >Pin code</label>
-                    </div>
-                </div>
-            </div>
-
-           
-              <!-- <div class="mt-4 pt-2">
-                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
-              </div> -->
-
-                <button type="submit" style="
-  background-color: red;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-" class="btn">Submit</button>
-
-            </form>
           </div>
-        </div>
+        </main>
       </div>
     </div>
   </div>
-</section>
-
-<?php
-    include("footer.php");
-?>
+  <!-- plugins:js -->
+  <script src="<?php echo $base.'assets/vendors/js/vendor.bundle.base.js';?>"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="<?php echo $base.'assets/js/material.js';?>"></script>
+  <script src="<?php echo $base.'assets/js/misc.js';?>"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <!-- End custom js for this page-->
+</body>
+</html>

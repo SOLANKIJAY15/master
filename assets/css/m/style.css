@@ -1,0 +1,15 @@
+.header
+{
+    background-color :rgb(241, 245, 17);
+    width:100%;
+    
+}
+
+.heading
+{
+    color:rgb(7, 7, 7);
+    text-align: center;
+    font-size: 24px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding :15px 0;
+}
