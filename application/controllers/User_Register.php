@@ -4,6 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_Register extends CI_Controller 
 {
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->database();
+		$this->load->helper(array('form', 'url'));
+       $this->load->library('form_validation');
+		$this->load->model('RegisterModel'); 
+ 
+	}
 	
 	/**
 	 * Index Page for this controller.
@@ -30,25 +40,50 @@ class User_Register extends CI_Controller
 	}
 	public function add_register()
 	{
-		$this->load->model('RegisterModel');
+		
 
 		//load registration view form
 		
 		// echo "inn";    print_r($_POST);
         //     exit;
         
-		// echo "inn";    print_r($_POST);
+		// echo "inn <pre>";    print_r($_POST);
 		// exit;
 		//  WITHOUT FORM VALIDATION
-        if(isset($_POST['save'])){ 	
-            $formArray=array();
-            $this->RegisterModel->add_register($_POST);
-            $this->session->set_flashdata('sucess','yes');
-            redirect(base_url().'index.php/Dashboard/index');
+			
+		
+       //echo "inn";
+	   $this->load->library('form_validation');
+
+	   $this->form_validation->set_rules('first_name','First name','required');
+	   $this->form_validation->set_rules('last_name','Last name','required');
+	   $this->form_validation->set_rules('email','Email','required|valid_email');
+	   $this->form_validation->set_rules('password','Password','required');	
+	   $this->form_validation->set_rules('conform_password','Conform password','required');
+	   $this->form_validation->set_rules('image','Image','required');
+	   $this->form_validation->set_rules('phone_no','Phone_no','required');
+	   $this->form_validation->set_rules('street_address','Street_address','required');
+	   $this->form_validation->set_rules('pin_code','Pincode','required');
+
+	   if($this->form_validation->run() === TRUE)
+	   {
+			if(isset($_POST['save'])){ 	
+					
+				$this->RegisterModel->add_register($_POST);
+				$this->session->set_flashdata('sucess','yes');
+				redirect(base_url().'index.php/Dashboard/index');
+				alert("data  inserted");
+			}
+			else{
+			echo "no yes";
+			
+			}
 		}
 		else{
-			
+			// echo "no";
+			$this->load->view('register.php');
 		}
+		
 	
 	}
 
