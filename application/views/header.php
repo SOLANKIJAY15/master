@@ -30,13 +30,13 @@
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="<?php echo $base.'/assets/lib/slick/slick.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
-        <link href="<?php echo $base.'/assets/lib/slick/slick-theme.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
+        <link href="<?php echo $base.'/assets/lib/slick/slick.css?v='.$this->config->item("curr_ver");?>" rel="stylesheet">
+        <link href="<?php echo $base.'/assets/lib/slick/slick-theme.css?v='.$this->config->item("curr_ver");?>" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="<?php echo $base.'/assets/css/style.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
-        <link href="<?php echo $base.'/assets/css/login.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
-        <link href="<?php echo $base.'/assets/css/register.css?v=$this->config->item("curr_ver")';?>" rel="stylesheet">
+        <link href="<?php echo $base.'/assets/css/style.css?v='.$this->config->item("curr_ver");?>" rel="stylesheet">
+        <link href="<?php echo $base.'/assets/css/login.css?v='.$this->config->item("curr_ver");?>" rel="stylesheet">
+        <link href="<?php echo $base.'/assets/css/register.css?v='.$this->config->item("curr_ver");?>" rel="stylesheet">
         <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
