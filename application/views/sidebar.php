@@ -48,17 +48,24 @@
               </a>
             </div>
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="<?php echo $base.'index.php/welcome/product';?>" >
+              <a class="mdc-expansion-panel-link"  data-toggle="expansionPanel"  href="<?php echo $base.'index.php/welcome/viewproduct';?>" data-target="sample-page-submenu">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">devices</i>
-                Product Master
+                Product
+                <i class="mdc-drawer-arrow material-icons">chevron_right</i>
               </a>
+              <div class="mdc-expansion-panel" id="sample-page-submenu">
+                <nav class="mdc-list mdc-drawer-submenu">
+                  
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="<?php echo $base.'index.php/welcome/product';?>">
+                      ADD PRODUCT
+                    </a>
+                  </div>
+                 
+                </nav>
+              </div>
             </div>
-            <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="<?php echo $base.'index.php/welcome/product1';?>" >
-                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">devices</i>
-                Product Master
-              </a>
-            </div>
+            
             <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-drawer-link" href="<?php echo $base.'index.php/welcome/category';?>" >
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">sort</i>
