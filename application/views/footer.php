@@ -3,7 +3,7 @@
      $base=$this->config->item("base_url");
     // print_r($base);
     // exit; 
-    echo "hello";
+   
 ?>
 <!-- Footer Start -->
    <div class="footer">
