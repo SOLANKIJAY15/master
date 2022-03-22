@@ -14,7 +14,7 @@ include("header.php");
         <script> 
         function validateForm() {
            
-       
+       //First Name Form Validation
             var first_name_length=document.myForm.first_name.value;
 
             var letters = /^[A-Za-z]+$/;
@@ -26,72 +26,47 @@ include("header.php");
                 return false;
             }
         
-            if(first_name_length.length <=5)
-            {
-                // document.getElementById('firstname_error').innerHTML="Please enter five char";  
-                $('#firstname_error').after("<lable id='valid_firstname'> please enter number </lable>");
-               
-                // alert( "Please Enter at list five character  !" );
-                    // document.myForm.first_name.focus() ;
-                 return false;
-               
-            }
-            // var last_name_length=document.myForm.last_name.value ; 
-            
-            // if( last_name_length == "") 
-            // {
-
-                
-            //     document.getElementById('errorname').innerHTML="Please enter a valid name";  
-            //     last_name_length.focus(); 
-            //   //  alert( "Please provide your Last Name!" );
-            //         //document.myForm.last_name.focus() ;
-            //      return false;
-            // }
-            
-            // var lsname=document.myForm.last_name.value ; 
-            // //var lsname = document.forms["myForm"]["last_name"];  
-            
-            //  if ( lsname == ""){ 
-            //      document.getElementById('errorname').innerHTML="Please enter a valid name";  
-            //      lsname.focus(); 
-            //      return false; 
-            //  }
-            
-            // var last_name_length=document.myForm.last_name.value;
-
-            // var letters = /^[A-Za-z]+$/;
-            // document.getElementById('last_name').innerHTML = '';
-            // if(document.myForm.first_name.value.match(letters)){
-            //     return true;
-            // }else{
-            //    alert("enter alphabetic numbers");
+            // if(first_name_length.length <=5){ 
+            //     $('#firstname_error').after("<lable id='valid_firstname'> please enter number </lable>");
             //     return false;
             // }
-        
-            // if(first_name_length.length <=5)
-            // {
-            //     document.getElementById('errorname').innerHTML="Please enter five char";  
-               
-            //     // alert( "Please Enter at list five character  !" );
-            //         document.myForm.first_name.focus() ;
-            //      return false;
-               
-            // }
+
+            //var last_name_length=document.myForm.last_name.value;
+
+            var ls = /^[A-Za-z]+$/;
+            document.getElementById('last_name').innerHTML = '';
+            if(document.myForm.last_name.value.match(ls)){
+                return true;
+            }else{
+            alert("enter alphabetic numbers");
+                return false;
+            }
+
+
+
+
+            var ml = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            document.getElementById('email').innerHTML = '';
+            if(document.myForm.email.value.match(ml)){
+                return true;
+            }else{
+            alert("enter valid email");
+                return false;
+            }
+
+            var ps = /^[A-Za-z0-9@]+$/;
+            document.getElementById('password').innerHTML = '';
+            if(document.myForm.password.value.match(ps)){
+                return true;
+            }else{
+            alert("enter valid password");
+                return false;
+            }
+
            
-            if( document.myForm.email.value == "" ) 
-            {
-                alert( "Please provide your email!" );
-                    document.myForm.email.focus() ;
-                 return false;
-            }
-            
-            if( document.myForm.password.value == "") 
-            {
-                alert( "Please provide your password!" );
-                    document.myForm.password.focus() ;
-                 return false;
-            }
+
+
+           
             if( document.myForm.conform_password.value == "") 
             {
                 alert( "Please provide your conform password!" );
@@ -149,26 +124,87 @@ include("header.php");
                 
                 return true;
                 $("#valid_firstname").remove();             
-            }else{
-                //document.getElementById('firstname_error').innerHTML="Please enter a  string";  
-                $('.firstname_error').after("<lable id='valid_firstname'> please enter number </lable>");
-
-                // document.myForm.first_name.focus() ;
+            }else{ 
+                $("#valid_firstname").remove();
+                $('.firstname_error').after("<lable id='valid_firstname' style='color:red;'> please enter Alphabetic Characters </lable>");
                 return false;
             }
         }
 
         $(document).on('change keypress', '#first_name', function(){
-            // let firstname = $('#first_name').val();
-            // console.log('firstname', firstname);
-
-            // if(firstname){
-            //     document.getElementById('firstname_error').innerHTML="";
-            // }
-            //document.getElementById('firstname_error').innerHTML=""; 
-
-            //$("#valid_firstname").remove();             
+            setTimeout(function(){
+             
+            $("#valid_firstname").remove();  
+            }, 1500);           
         });
+
+         
+        function lslettersOnly(){
+            
+            var charCode = event.keyCode;
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8){
+                
+                return true;
+                $("#valid_lastname").remove();             
+            }else{ 
+                $("#valid_lastname").remove();
+                $('.lastname_error').after("<lable id='valid_lastname' style='color:red;'> please enter Alphabetic Characters </lable>");
+                return false;
+            }
+        }
+
+        $(document).on('change keypress', '#last_name', function(){
+            setTimeout(function(){
+             
+            $("#valid_lastname").remove();  
+            }, 1500);           
+        });
+
+
+        function emailOnly(){
+            
+            var charCode = event.keyCode;
+            if ((charCode >= 64 && charCode < 91) || (charCode >= 46 && charCode < 57) || (charCode > 96 && charCode < 123) || charCode == 8){
+                
+                return true;
+                $("#valid_email").remove();             
+            }else{ 
+                $("#valid_email").remove();
+                $('.email_error').after("<lable id='valid_email' style='color:red;'> please enter Valid Email </lable>");
+                return false;
+            }
+        }
+
+        $(document).on('change keypress', '#email', function(){
+            setTimeout(function(){
+             
+            $("#valid_email").remove();  
+            }, 1500);           
+        });
+
+        function passwordOnly(){
+            
+            var charCode = event.keyCode;
+            if ((charCode >= 64 && charCode < 91) || (charCode >= 46 && charCode < 57) || (charCode > 96 && charCode < 123) || charCode == 8){
+                
+                return true;
+                $("#valid_email").remove();             
+            }else{ 
+                $("#valid_email").remove();
+                $('.email_error').after("<lable id='valid_email' style='color:red;'> please enter Valid Email </lable>");
+                return false;
+            }
+        }
+
+        $(document).on('change keypress', '#email', function(){
+            setTimeout(function(){
+             
+            $("#valid_email").remove();  
+            }, 1500);           
+        });
+
+
+       
 
        
         </script>
@@ -206,28 +242,32 @@ include("header.php");
                         <label class="form-label">First Name</label>
                         <input type="text" name="first_name" id="first_name" class="form-control form-control-lg" onkeypress="return lettersOnly(event)" value="<?php echo set_value('first_name'); ?>"/>
                         <div style="color:red;"> <?php echo form_error('first_name'); ?> </div>
-                        <div class="error firstname_error" id="firstname_error"></div>
+
+                        <div  class="error firstname_error" id="firstname_error"></div>
                     </div>
                     
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
                       <label class="form-label">Last Name</label>
-                        <input type="text" name="last_name" id="last_name" class="form-control form-control-lg" value="<?php echo set_value('last_name'); ?>"  />
+                        <input type="text" name="last_name" onkeypress="return lslettersOnly(event)"
+                        id="last_name" class="form-control form-control-lg" value="<?php echo set_value('last_name'); ?>"  />
                     </div>
                     
                     <div style="color:red;"><?php echo form_error('last_name'); ?>
                    
-                </div> </div><div class="error" id="errorname"></div>
+                </div><div  class="error lastname_error" id="lastname_error"></div> </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mb-4 d-flex align-items-center">
                     <div class="form-outline datepicker w-100">
                         <label class="form-label">Email</label>
-                        <input type="text" name="email" id="email" class="form-control form-control-lg" value="<?php echo set_value('email'); ?>" />
+                        <input type="text" name="email" id="email" 
+                        onkeypress="return emailOnly(event)" class="form-control form-control-lg" value="<?php echo set_value('email'); ?>" />
                         <div style="color:red;"><?php echo form_error('email'); ?></div>
-                    </div>
+                        <div  class="error email_error" id="email_error"></div> </div>
+                    
                    
                 </div>
               
