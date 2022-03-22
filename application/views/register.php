@@ -4,15 +4,175 @@ include("header.php");
 <!DOCTYPE html>
 <html>
     <head>
-        <script>
+    <style>
+         .error{
+            color: #D8000C;
+            background-color: #FFBABA;
+         }
+      </style>
+         
+        <script> 
         function validateForm() {
-        let x = document.forms["myForm"]["first_name"].value;
-        if (x == "") {
-            alert("Name must be filled out");
-            return false;
+           
+       
+            var first_name_length=document.myForm.first_name.value;
+
+            var letters = /^[A-Za-z]+$/;
+            document.getElementById('first_name').innerHTML = '';
+            if(document.myForm.first_name.value.match(letters)){
+                return true;
+            }else{
+               alert("enter alphabetic numbers");
+                return false;
+            }
+        
+            if(first_name_length.length <=5)
+            {
+                // document.getElementById('firstname_error').innerHTML="Please enter five char";  
+                $('#firstname_error').after("<lable id='valid_firstname'> please enter number </lable>");
+               
+                // alert( "Please Enter at list five character  !" );
+                    // document.myForm.first_name.focus() ;
+                 return false;
+               
+            }
+            // var last_name_length=document.myForm.last_name.value ; 
+            
+            // if( last_name_length == "") 
+            // {
+
+                
+            //     document.getElementById('errorname').innerHTML="Please enter a valid name";  
+            //     last_name_length.focus(); 
+            //   //  alert( "Please provide your Last Name!" );
+            //         //document.myForm.last_name.focus() ;
+            //      return false;
+            // }
+            
+            // var lsname=document.myForm.last_name.value ; 
+            // //var lsname = document.forms["myForm"]["last_name"];  
+            
+            //  if ( lsname == ""){ 
+            //      document.getElementById('errorname').innerHTML="Please enter a valid name";  
+            //      lsname.focus(); 
+            //      return false; 
+            //  }
+            
+            // var last_name_length=document.myForm.last_name.value;
+
+            // var letters = /^[A-Za-z]+$/;
+            // document.getElementById('last_name').innerHTML = '';
+            // if(document.myForm.first_name.value.match(letters)){
+            //     return true;
+            // }else{
+            //    alert("enter alphabetic numbers");
+            //     return false;
+            // }
+        
+            // if(first_name_length.length <=5)
+            // {
+            //     document.getElementById('errorname').innerHTML="Please enter five char";  
+               
+            //     // alert( "Please Enter at list five character  !" );
+            //         document.myForm.first_name.focus() ;
+            //      return false;
+               
+            // }
+           
+            if( document.myForm.email.value == "" ) 
+            {
+                alert( "Please provide your email!" );
+                    document.myForm.email.focus() ;
+                 return false;
+            }
+            
+            if( document.myForm.password.value == "") 
+            {
+                alert( "Please provide your password!" );
+                    document.myForm.password.focus() ;
+                 return false;
+            }
+            if( document.myForm.conform_password.value == "") 
+            {
+                alert( "Please provide your conform password!" );
+                    document.myForm.conform_password.focus() ;
+                 return false;
+            }
+            if( document.myForm.image.value == "") 
+            {
+                alert( "Please provide your image!" );
+                    document.myForm.image.focus() ;
+                 return false;
+            }
+
+            // var phone = document.forms["myForm"]["phone_no"].value;
+            // var phoneNum = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/; 
+            // if(phone.value.match(phoneNum)) {
+            //     return true;
+            // }
+            // else {
+            //     document.getElementById("phone_no").className = document.getElementById("phone_no").className + " error";
+            //     return false;
+            // }
+            // var phone = document.forms["myForm"]["phone_no"].value;
+            // var phone_no = /^\d{10}$/;
+            if(  document.myForm.phone_no.value == "") 
+            {
+                alert( "Please provide your phone no!" );
+                    document.myForm.phone_no.focus() ;
+                 return false;
+            }
+            if( document.myForm.street_address.value == "" ) 
+            {
+                alert( "Please provide your street address!" );
+                    document.myForm.street_address.focus() ;
+                 return false;
+            }
+            if( document.myForm.pin_code.value == "" ) 
+            {
+                alert( "Please provide your pin code" );
+                    document.myForm.pin_code.focus() ;
+                 return false;
+            }
+            if(error>0) {
+                return false;
+            }
+            return true;
+            
         }
+           
+        
+        function lettersOnly(){
+            
+            var charCode = event.keyCode;
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8){
+                
+                return true;
+                $("#valid_firstname").remove();             
+            }else{
+                //document.getElementById('firstname_error').innerHTML="Please enter a  string";  
+                $('.firstname_error').after("<lable id='valid_firstname'> please enter number </lable>");
+
+                // document.myForm.first_name.focus() ;
+                return false;
+            }
         }
+
+        $(document).on('change keypress', '#first_name', function(){
+            // let firstname = $('#first_name').val();
+            // console.log('firstname', firstname);
+
+            // if(firstname){
+            //     document.getElementById('firstname_error').innerHTML="";
+            // }
+            //document.getElementById('firstname_error').innerHTML=""; 
+
+            //$("#valid_firstname").remove();             
+        });
+
+       
         </script>
+   
     </head>
 <body>
 
@@ -44,60 +204,65 @@ include("header.php");
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
                         <label class="form-label">First Name</label>
-                        <input type="text" name="first_name" id="first_name" class="form-control form-control-lg" value="<?php echo set_value('first_name'); ?>" />
+                        <input type="text" name="first_name" id="first_name" class="form-control form-control-lg" onkeypress="return lettersOnly(event)" value="<?php echo set_value('first_name'); ?>"/>
                         <div style="color:red;"> <?php echo form_error('first_name'); ?> </div>
+                        <div class="error firstname_error" id="firstname_error"></div>
                     </div>
-                   
-                
-            </div>
+                    
+                </div>
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        <label class="form-label">Last Name</label>
-                        <input type="text" name="last_name" id="last_name" class="form-control form-control-lg"  />
+                      <label class="form-label">Last Name</label>
+                        <input type="text" name="last_name" id="last_name" class="form-control form-control-lg" value="<?php echo set_value('last_name'); ?>"  />
                     </div>
+                    
                     <div style="color:red;"><?php echo form_error('last_name'); ?>
-                </div> </div>
+                   
+                </div> </div><div class="error" id="errorname"></div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mb-4 d-flex align-items-center">
                     <div class="form-outline datepicker w-100">
                         <label class="form-label">Email</label>
-                        <input type="email" name="email" id="email" class="form-control form-control-lg" />
+                        <input type="text" name="email" id="email" class="form-control form-control-lg" value="<?php echo set_value('email'); ?>" />
+                        <div style="color:red;"><?php echo form_error('email'); ?></div>
                     </div>
+                   
                 </div>
-                <div style="color:red;"><?php echo form_error('email'); ?></div>
+              
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
                         <label class="form-label" >password</label>
-                        <input type="password" id="password" name="password" class="form-control form-control-lg" />
-                  </div>
+                        <input type="password" id="password" name="password" class="form-control form-control-lg" value="<?php echo set_value('password'); ?>" />
+                  </div><div style="color:red;"><?php echo form_error('password'); ?></div>
                 </div>
-                <div style="color:red;"><?php echo form_error('password'); ?></div>
+                
             </div>
 
             <div class="row">
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
                         <label class="form-label" >Conform password</label>
-                        <input type="password" id="conform_password"  name="conform_password" class="form-control form-control-lg"  />
+                        <input type="password" id="conform_password"  name="conform_password" class="form-control form-control-lg"  value="<?php echo set_value('conform_password'); ?>"/>
                   </div>
+                  <div style="color:red;"><?php echo form_error('conform_password'); ?></div>
                 </div>
-                <div style="color:red;"><?php echo form_error('conform_password'); ?></div>
+                
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
                         <label class="form-label">Upload image</label>    
-                        <input class="form-control form-control-lg" id="image"  name="image"  type="file" />
+                        <input class="form-control form-control-lg" id="image"  name="image"  type="file" value="<?php echo set_value('image'); ?>" />
                     </div>
-                </div>
                 <div style="color:red;"><?php echo form_error('image'); ?></div>
+        </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
                         <label class="form-label">Phone Number</label>
-                        <input type="text" name="phone_no" id="phone_no"  class="form-control form-control-lg" />
+                        <input type="text" name="phone_no" id="phone_no"  class="form-control form-control-lg"  value="<?php echo set_value('phone_no'); ?>" minlength="9" maxlength="10" size="10"/>
                   </div>
                   <div style="color:red;"><?php echo form_error('phone_no'); ?></div>
                 </div>
@@ -147,19 +312,18 @@ include("header.php");
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        <input type="text" name="street_address" id="street_address"  class="form-control form-control-lg" />
+                        <input type="text" name="street_address" id="street_address"  class="form-control form-control-lg" value="<?php echo set_value('street_address'); ?>" />
                         <label class="form-label">Street Address</label>
                     </div>
-                    
-                </div><div style="color:red;"><?php echo form_error('street_address'); ?></div>
+                    <div style="color:red;"><?php echo form_error('street_address'); ?></div></div>
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        <input type="number" maxlength="6" id="pin_code"  name="pin_code" class="form-control form-control-lg" />
+                        <input type="number" maxlength="6" id="pin_code"  name="pin_code" class="form-control form-control-lg" value="<?php echo set_value('pin_code'); ?>"/>
                         <label class="form-label" >Pin code</label>
                     </div>
                     
-                </div><div style="color:red;"><?php echo form_error('pin_code'); ?></div>
-            </div>
+            <div style="color:red;"><?php echo form_error('pin_code'); ?></div>
+            </div>    </div>
 
            
               <!-- <div class="mt-4 pt-2">
@@ -177,6 +341,7 @@ include("header.php");
 " class="btn"  value="Submit" name="save">Submit
 
             </form>
+            
           </div>
         </div>
       </div>
