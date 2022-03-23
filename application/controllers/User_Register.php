@@ -63,7 +63,8 @@ class User_Register extends CI_Controller
 	// 	$data['city'] = $city;
 	// 	$this->load->view('register',$data);
 	// }
-
+	
+	
 
 	public function register1()
 	{
@@ -76,8 +77,8 @@ class User_Register extends CI_Controller
 		//   print_r($_POST);
         //     exit;
         
-		// echo "inn <pre>";    print_r($_POST);
-		// exit;
+		echo "inn <pre>";    print_r($_POST);
+		exit;
 		//  WITHOUT FORM VALIDATION
 			
 		
@@ -103,15 +104,6 @@ class User_Register extends CI_Controller
 	   if($this->form_validation->run() === TRUE)
 	   {
 			if(isset($_POST['save'])){ 
-				
-				
-
-				
-
-
-					
-				
-
 				$this->RegisterModel->add_register($_POST);
 				$this->session->set_flashdata('sucess','yes');
 				redirect(base_url().'index.php/Dashboard/index');

@@ -15,6 +15,8 @@ include("header.php");
         $(document).ready(function() {
             // function validateForm(e) {
             $('#myForm').submit(function(e) {
+
+
                 e.preventDefault();
                 let passerror = false;
                 
@@ -142,7 +144,7 @@ include("header.php");
                 }
                 
                 return passerror;
-            }
+            });
         });
            
         
@@ -319,8 +321,8 @@ include("header.php");
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
             <!-- REGISTER FORM START -->
          
-
-            <form name="myForm"  onsubmit="return validateForm()" action="<?php echo base_url().'index.php/User_Register/add_register'; ?>" method="post"> 
+            <!--  -->
+            <form name="myForm" id="myForm" action="<?php echo base_url().'index.php/User_Register/add_register'; ?>" method="post"> 
             <br><br>
             <div class="row">
             <div class="col-md-6 mb-4 pb-2">
@@ -438,7 +440,7 @@ include("header.php");
                         
                          <label class="form-label" >State</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     
-                        <select class="form-control" name="con_id" >
+                        <select class="form-control" name="state_id" >
                         <?php if(!empty($state)) { 
                             foreach($state as $state1){ ?>
                                 
@@ -456,7 +458,7 @@ include("header.php");
                     <div class="form-group">
                         <label class="form-label" >City</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     
-                        <select class="form-control" name="con_id" >
+                        <select class="form-control" name="city_id" >
                         <?php if(!empty($city)) { 
                             foreach($city as $city1){ ?>
                                 
@@ -497,7 +499,7 @@ include("header.php");
                 <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
               </div> -->
 
-                <input type="submit" style="
+                <!-- <input type="submit" style="
   background-color: red;
   color: white;
   padding: 15px 20px;
@@ -505,8 +507,8 @@ include("header.php");
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
-" class="btn" value="Submit" name="save">Submit
-
+" class="btn" value="Submit" name="save"/> -->
+<input type="submit" value="Submit" name="save">
             </form>
             
           </div>

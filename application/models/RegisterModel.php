@@ -48,9 +48,9 @@ class RegisterModel extends CI_Model
 
             );
          
-            // echo "form aRAAY <pre>";
-            // print_r($formArray);
-            // exit;
+            echo "form aRAAY <pre>";
+            print_r($formArray);
+            exit;
             $this->db->insert("user",$formArray);
       
     }
