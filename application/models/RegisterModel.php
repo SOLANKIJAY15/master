@@ -28,9 +28,12 @@ class RegisterModel extends CI_Model
     {
         
         $formArray = array();
-       
+
+      
             // $type=$_POST["2"];
             $formArray  = array(
+
+
                 
                 "first_name" => $this->input->post('first_name'),
                 "last_name" => $this->input->post('last_name'),
@@ -41,7 +44,7 @@ class RegisterModel extends CI_Model
                 "con_id"=>intval(5),
                 "phone_no" =>$this->input->post('phone_no'),
                 "street_address" =>$this->input->post('street_address'),
-                "pincode" =>$this->input->post('pin_code'),
+                "pincode" =>$this->input->post('pin_code'), 
 
             );
             // echo "form aRAAY <pre>";
