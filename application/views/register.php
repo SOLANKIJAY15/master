@@ -298,33 +298,6 @@ include("header.php");
         });
 
         
-
-
-
-        function countryOnly(){
-            
-         
-            var con_id = $('#country').val();
-            if (con_id != ''){
-                
-                return true;
-                $("#valid_country").remove();             
-            }else{ 
-                $("#valid_country").remove();
-              //  $('.lastname_error').after("<lable id='valid_country' style='color:red;'> please enter Alphabetic Characters </lable>");
-                return false;
-            }
-            }
-
-            $(document).on('change keypress', '#last_name', function(){
-                setTimeout(function(){
-                
-                $("#valid_country").remove();  
-                }, 1500);           
-            });
-       
-
-            
         </script>
    
     </head>
