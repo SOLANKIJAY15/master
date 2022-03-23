@@ -301,27 +301,7 @@ include("header.php");
 
 
 
-        function countryOnly(){
-            
-         
-            var con_id = $('#country').val();
-            if (con_id != ''){
-                
-                return true;
-                $("#valid_country").remove();             
-            }else{ 
-                $("#valid_country").remove();
-              //  $('.lastname_error').after("<lable id='valid_country' style='color:red;'> please enter Alphabetic Characters </lable>");
-                return false;
-            }
-            }
-
-            $(document).on('change keypress', '#last_name', function(){
-                setTimeout(function(){
-                
-                $("#valid_country").remove();  
-                }, 1500);           
-            });
+       
        
 
             
@@ -339,12 +319,8 @@ include("header.php");
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
             <!-- REGISTER FORM START -->
          
-<<<<<<< HEAD
+
             <form name="myForm"  onsubmit="return validateForm()" action="<?php echo base_url().'index.php/User_Register/add_register'; ?>" method="post"> 
-=======
-            <!-- <form name="myForm" id="myForm" action="" method="post">  -->
-            <form id="myForm" method="post" action="<?php echo base_url().'index.php/User_Register/add_register'; ?>">
->>>>>>> 0a375375699dcb56e43b1af798ef52870eddb0d4
             <br><br>
             <div class="row">
             <div class="col-md-6 mb-4 pb-2">
@@ -522,17 +498,6 @@ include("header.php");
               </div> -->
 
                 <input type="submit" style="
-<<<<<<< HEAD
-                    background-color: red;
-                    color: white;
-                    padding: 15px 20px;
-                    border: none;
-                    cursor: pointer;
-                    width: 100%;
-                    opacity: 0.9;
-                    " class="btn"  value="Submit" name="save">
-
-=======
   background-color: red;
   color: white;
   padding: 15px 20px;
@@ -541,8 +506,7 @@ include("header.php");
   width: 100%;
   opacity: 0.9;
 " class="btn" value="Submit" name="save">Submit
-<!-- <input type="submit" value="Submit" /> -->
->>>>>>> 0a375375699dcb56e43b1af798ef52870eddb0d4
+
             </form>
             
           </div>
