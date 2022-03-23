@@ -46,9 +46,10 @@ include("header.php");
                 }
 
                 /* START EMAIL FORM VALIDATION*/
-                var ml = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                
                 let email = $('#email').val();
-                if(document.myForm.email.value.match(ml)){
+                var ml = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                if(email.match(ml)){    
                     passerror = true;
                     $('#valid_email').remove();
                 }else{
@@ -57,46 +58,49 @@ include("header.php");
                     return false;
                 }
 
+                let password = $('#password').val();
                 var pas =/^[A-Za-z0-9]+$/;
-                document.getElementById('password').innerHTML = '';
-                if(document.myForm.password.value.match(pas)){
-                    //return true;
+                if(password.match(pas)){
+                    passerror = true;
+                    $('#valid_password').remove();
                 }else{
-                alert("enter valid password");
+                    $('#password_error').after("<lable id='valid_password' style='color:red;'> please enter password </lable>");
+                    return false;
+                }
+
+                let conform_password = $('#conform_password').val();
+                var pas =/^[A-Za-z0-9]+$/;
+                if(conform_password.match(pas)){
+                    passerror = true;
+                    $('#valid_conform_password').remove();
+                }else{
+                    $('#conform_password_error').after("<lable id='valid_conform_password' style='color:red;'> please enter Conform Password </lable>");
                     return false;
                 }
 
 
-
-                var con_pas =/^[A-Za-z0-9]+$/;
-                document.getElementById('conform_password').innerHTML = '';
-                if(document.myForm.conform_password.value.match(con_pas)){
-                    //return true;
-                }else{
-                    alert("enter valid password");
-                    return false;
-                }
-            
-                var ps1 = document.myForm.password.value;
-                console.log("ent",ps1);
-                var cs1 = ddocument.myForm.conform_password.value;
-                console.log("hh",cs1);
-                return false;
+                var ps1 = $('#password').val();
+                
+                var cs1 = $('#conform_password').val();
                 if (ps1 != cs1) {
-                    alert("Passwords do not match.");
+                    $('#conform_password_error').after("<lable id='valid_conform_password' style='color:red;'> DOES NOT MATCH PASSWORD </lable>");
                     return false;
                 }
                 else{
-                    //return true;
+                    $('#valid_conform_password').remove();
                 }
-                return false;
+              
             
-                if( document.myForm.image.value == "") 
-                {
-                    alert( "Please provide your image!" );
-                        document.myForm.image.focus() ;
+                let image = $('#image').val();
+               
+                if(image){
+                    passerror = true;
+                    $('#valid_image').remove();
+                }else{
+                    $('#image_error').after("<lable id='valid_image' style='color:red;'> please enter Image </lable>");
                     return false;
                 }
+
 
                 // var phone = document.forms["myForm"]["phone_no"].value;
                 // var phoneNum = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/; 
@@ -109,34 +113,36 @@ include("header.php");
                 // }
                 // var phone = document.forms["myForm"]["phone_no"].value;
                 // var phone_no = /^\d{10}$/;
+
+                let phone_no = $('#phone_no').val();
                 var phn =/^[0-9]+$/;
-                document.getElementById('phone_no').innerHTML = '';
-                if(document.myForm.phone_no.value.match(phn)){
-                    return true;
+                if(phone_no.match(phn)){
+                    passerror = true;
+                    $('#valid_phone_no').remove();
                 }else{
-                    alert("Enter Only NUMBERS");
+                    $('#phone_no_error').after("<lable id='valid_phone_no' style='color:red;'> please 10 NUMBERS ONLY! </lable>");
                     return false;
                 }
-                if( document.myForm.street_address.value == "" ) 
-                {
-                    alert( "Please provide your street address!" );
-                        document.myForm.street_address.focus() ;
-                    return false;
-                }
+
+
+                let pin_code = $('#pin_code').val();
                 var pin =/^[0-9]+$/;
-                document.getElementById('pin_code').innerHTML = '';
-                if(document.myForm.pin_code.value.match(pin)){
-                    return true;
+                if(pin_code.match(pin)){
+                    passerror = true;
+                    $('#valid_pin_code').remove();
                 }else{
-                    alert("Enter Only 6 NUMBERS");
+                    $('#pin_code_error').after("<lable id='valid_pin_code' style='color:red;'> please ENTER 6 numbers only </lable>");
                     return false;
                 }
+
+          
+                
                 if(error>0) {
                     return false;
                 }
                 
                 return passerror;
-            });
+            }
         });
            
         
@@ -311,7 +317,7 @@ include("header.php");
             <!-- REGISTER FORM START -->
          
             <!-- <form name="myForm" id="myForm" action="" method="post">  -->
-            <form id="myForm" method="post" action="">
+            <form id="myForm" method="post" action="<?php echo base_url().'index.php/User_Register/add_register'; ?>">
             <br><br>
             <div class="row">
             <div class="col-md-6 mb-4 pb-2">
@@ -456,7 +462,8 @@ include("header.php");
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
                         <input type="number" maxlength="6" id="pin_code"  name="pin_code" class="form-control form-control-lg"
-                        onkeypress="return pincodeOnly(event)" value="<?php echo set_value('pin_code'); ?>"/>
+                        onkeypress="return pincodeOnly(event)" value="<?php echo set_value('pin_code'); ?>"
+                        minlength="5" maxlength="6" size="6"/>
                         <label class="form-label" >Pin code</label>
                             <div style="color:red;"><?php echo form_error('pin_code'); ?>
                             </div>
@@ -471,7 +478,7 @@ include("header.php");
                 <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
               </div> -->
 
-                <!-- <input type="submit" style="
+                <input type="submit" style="
   background-color: red;
   color: white;
   padding: 15px 20px;
@@ -479,8 +486,8 @@ include("header.php");
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
-" class="btn"  value="Submit" name="save">Submit -->
-<input type="submit" value="Submit" />
+" class="btn" value="Submit" name="save">Submit
+<!-- <input type="submit" value="Submit" /> -->
             </form>
             
           </div>
