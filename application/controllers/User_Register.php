@@ -14,26 +14,56 @@ class User_Register extends CI_Controller
 		$this->load->model('RegisterModel'); 
  
 	}
+	public function register(){
+		// echo "gjhujg";
+        // print_r($_POST);
+        // exit;
+		// $this->load->model('RegisterModel');
+		// $city = $this->RegisterModel->country();
+		// $con = array();
+		// $con['country'] = $country;
+		// $this->load->view('register',$con);
+		$this->load->model('RegisterModel');
+		$country= $this->RegisterModel->country();
+		$state = $this->RegisterModel->state();
+		$city = $this->RegisterModel->city();
+		$data = array();
 	
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
-	public function register()
-	{
-		$this->load->view('register.php');
+		$data['country'] = $country;
+		$data['state'] = $state;
+		$data['city'] = $city;
+
+		$this->load->view('register',$data);
 	}
+	
+	// //  public function country(){
+	// // 	/* echo "gjhujg";
+    // //     print_r($_POST);
+    // //     exit; */
+	// // 	$this->load->model('RegisterModel');
+	// // 	$city = $this->RegisterModel->country();
+	// // 	$con = array();
+	// // 	$con['country'] = $country;
+	// // 	$this->load->view('register',$con);
+	// }
+
+	// public function state(){
+	// 	$this->load->model('RegisterModel');
+	// 	$city = $this->RegisterModel->state();
+	// 	$data = array();
+	// 	$data['state'] = $state;
+	// 	$this->load->view('register',$data);
+	// }
+
+	// public function city(){
+	// 	$this->load->model('RegisterModel');
+	// 	$city = $this->RegisterModel->city();
+	// 	$data = array();
+	// 	$data['city'] = $city;
+	// 	$this->load->view('register',$data);
+	// }
+
+
 	public function register1()
 	{
 		$this->load->view('register1.php');
@@ -69,6 +99,8 @@ class User_Register extends CI_Controller
 	   {
 			if(isset($_POST['save'])){ 	
 					
+				
+
 				$this->RegisterModel->add_register($_POST);
 				$this->session->set_flashdata('sucess','yes');
 				redirect(base_url().'index.php/Dashboard/index');

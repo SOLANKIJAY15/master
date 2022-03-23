@@ -204,15 +204,38 @@ include("header.php");
         });
 
 
+
+
+        function countryOnly(){
+            
+         
+            var con_id = $('#country').val();
+            if (con_id != ''){
+                
+                return true;
+                $("#valid_country").remove();             
+            }else{ 
+                $("#valid_country").remove();
+              //  $('.lastname_error').after("<lable id='valid_country' style='color:red;'> please enter Alphabetic Characters </lable>");
+                return false;
+            }
+            }
+
+            $(document).on('change keypress', '#last_name', function(){
+                setTimeout(function(){
+                
+                $("#valid_country").remove();  
+                }, 1500);           
+            });
        
 
-       
+            
         </script>
    
     </head>
 <body>
 
-<section class="vh-100 gradient-custom">
+<section class="vh-150 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-12 col-lg-9 col-xl-7">
@@ -221,7 +244,7 @@ include("header.php");
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
             <!-- REGISTER FORM START -->
          
-            <form name="myForm"  onsubmit="return validateForm()" action="<?php echo base_url().'User_Register/add_register'; ?>" method="post"> 
+            <form name="myForm"  onsubmit="return validateForm()" action="<?php echo base_url().'index.php/User_Register/add_register'; ?>" method="post"> 
             <br><br>
             <div class="row">
             <div class="col-md-6 mb-4 pb-2">
@@ -309,40 +332,56 @@ include("header.php");
                 
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-group">
-                        <label class="form-label" name="1">Country</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <select class="form-control" >
-                                <option value="1" disabled>Choose option</option>
-                                <option value="2">Subject 1</option>
-                                <option value="3">Subject 2</option>
-                                <option value="4">Subject 3</option>
+                        <label class="form-label" >Country</label>
+                        <select class="form-control" name="con_id" onkeypress="return countryOnly(event)">
+                        <?php if(!empty($country)) { 
+                            foreach($country as $country1){ ?>
+                                
+                                <option value="<?php echo $country1['con_id'];?>"><?php echo $country1['name'];?></option>
+                                <?php } } else {
+                              echo "data not found"  ;
+                            } ?>
+                             
                             </select>
                     </div>
                     
-                </div><div style="color:red;"><?php echo form_error('1'); ?></div>
-            </div>
+                </div>
+                            </div>
 
 
             <div class="row">
             <div class="col-md-6 mb-4 pb-2">
                     <div class="form-group">
-                        <label class="form-label" name="2">State</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <select class="form-control" >
-                                <option value="1" disabled>Choose option</option>
-                                <option value="2">Subject 1</option>
-                                <option value="3">Subject 2</option>
-                                <option value="4">Subject 3</option>
+                        
+                         <label class="form-label" >State</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                        <select class="form-control" name="con_id" >
+                        <?php if(!empty($state)) { 
+                            foreach($state as $state1){ ?>
+                                
+                                <option value="<?php echo $state1['con_id'];?>"><?php echo $state1['name'];?></option>
+                                <?php } } else {
+                              echo "data not found"  ;
+                            } ?>
+                             
                             </select>
                     </div>
                    
                 </div> <div style="color:red;"><?php echo form_error('2'); ?></div>
+
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-group">
-                        <label class="form-label" name="3">City</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <select class="form-control" >
-                                <option value="1" disabled>Choose option</option>
-                                <option value="2">Subject 1</option>
-                                <option value="3">Subject 2</option>
-                                <option value="4">Subject 3</option>
+                        <label class="form-label" >City</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                        <select class="form-control" name="con_id" >
+                        <?php if(!empty($city)) { 
+                            foreach($city as $city1){ ?>
+                                
+                                <option value="<?php echo $city1['con_id'];?>"><?php echo $city1['name'];?></option>
+                                <?php } } else {
+                              echo "data not found"  ;
+                            } ?>
+                             
                             </select>
                     </div>
                   
@@ -371,14 +410,14 @@ include("header.php");
               </div> -->
 
                 <input type="submit" style="
-  background-color: red;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-" class="btn"  value="Submit" name="save">Submit
+                    background-color: red;
+                    color: white;
+                    padding: 15px 20px;
+                    border: none;
+                    cursor: pointer;
+                    width: 100%;
+                    opacity: 0.9;
+                    " class="btn"  value="Submit" name="save">
 
             </form>
             

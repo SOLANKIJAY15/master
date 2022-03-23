@@ -38,12 +38,13 @@ class RegisterModel extends CI_Model
                 "password" => $this->input->post('password'),
                 "conform_password" =>$this->input->post('conform_password'),
                 "image" =>$this->input->post('image'),
-                "con_id"=>intval(5),
+                "con_id"=>$this->input->post('con_id'),
                 "phone_no" =>$this->input->post('phone_no'),
                 "street_address" =>$this->input->post('street_address'),
                 "pincode" =>$this->input->post('pin_code'),
 
             );
+         
             // echo "form aRAAY <pre>";
             // print_r($formArray);
             // exit;
@@ -51,7 +52,26 @@ class RegisterModel extends CI_Model
       
     }
 
-   
+              public function country(){
+            
+                    $this->db->where('status',1);
+                    return $country= $this->db->get('country')->result_array();
+            
+                }
+                public function state(){
+            
+                    $this->db->where('status',2);
+                    return $state= $this->db->get('country')->result_array();
+            
+                }
+                public function city(){
+            
+                    $this->db->where('status',3);
+                    return $city= $this->db->get('country')->result_array();
+            
+                }
+        // $this->db->where('con_id',$Id);
+        // return $city = $this->db->get('country')->row_array(); 
 
 }
 ?>
