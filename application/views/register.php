@@ -4,6 +4,7 @@ include("header.php");
 <!DOCTYPE html>
 <html>
     <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
          .error{
             color: #D8000C;
@@ -61,7 +62,7 @@ include("header.php");
                 }
 
                 let password = $('#password').val();
-                var pas =/^[A-Za-z0-9]+$/;
+                var pas =/^[A-Za-z0-9]{12}+$/;
                 if(password.match(pas)){
                     passerror = true;
                     $('#valid_password').remove();
@@ -71,7 +72,7 @@ include("header.php");
                 }
 
                 let conform_password = $('#conform_password').val();
-                var pas =/^[A-Za-z0-9]+$/;
+                var pas =/^[A-Za-z0-9]{12}+$/;
                 if(conform_password.match(pas)){
                     passerror = true;
                     $('#valid_conform_password').remove();
@@ -128,7 +129,7 @@ include("header.php");
 
 
                 let pin_code = $('#pin_code').val();
-                var pin =/^[0-9]+$/;
+                var pin =/^[1-9][0-9]{6}$/;
                 if(pin_code.match(pin)){
                     passerror = true;
                     $('#valid_pin_code').remove();
@@ -137,16 +138,19 @@ include("header.php");
                     return false;
                 }
 
-          
+                if(passerror==true){
+                 $(myForm).find('button[type="submit"]').attr('disabled', 'disabled');
+                myForm.submit();
+                }           
                 
-                if(error>0) {
-                    return false;
-                }
+                // if(error>0) {
+                //     return false;
+                // }
                 
-                return passerror;
-            }
+                 //return passerror;
+            });
         });
-           
+         
         
         function lettersOnly(){
             
@@ -161,15 +165,13 @@ include("header.php");
                 return false;
             }
         }
-
         $(document).on('change keypress', '#first_name', function(){
             setTimeout(function(){
              
             $("#valid_firstname").remove();  
             }, 1500);           
         });
-
-         
+        
         function lslettersOnly(){
             
             var charCode = event.keyCode;
@@ -183,14 +185,12 @@ include("header.php");
                 return false;
             }
         }
-
         $(document).on('change keypress', '#last_name', function(){
             setTimeout(function(){
              
             $("#valid_lastname").remove();  
             }, 1500);           
         });
-
 
         function emailOnly(){
             
@@ -205,15 +205,13 @@ include("header.php");
                 return false;
             }
         }
-
         $(document).on('change keypress', '#email', function(){
             setTimeout(function(){
              
             $("#valid_email").remove();  
             }, 1500);           
         });
-
-         
+ 
         function passwordOnly(){
             
             var charCode = event.keyCode;
@@ -227,13 +225,13 @@ include("header.php");
                 return false;
             }
         }
-
         $(document).on('change keypress', '#password', function(){
             setTimeout(function(){
              
             $("#valid_password").remove();  
             }, 1500);           
         });
+
        //Conform Password Form validation
         function conformpasswordOnly(){
             
@@ -248,14 +246,12 @@ include("header.php");
                 return false;
             }
         }
-
         $(document).on('change keypress', '#conform_password', function(){
             setTimeout(function(){
              
             $("#valid_conform_password").remove();  
             }, 1500);           
         });
-
 
         function phoneNoOnly(){
             
@@ -270,7 +266,6 @@ include("header.php");
                 return false;
             }
         }
-
         $(document).on('change keypress', '#phone_no', function(){
             setTimeout(function(){
              
@@ -291,13 +286,13 @@ include("header.php");
                 return false;
             }
         }
-
         $(document).on('change keypress', '#pin_code', function(){
             setTimeout(function(){
              
             $("#valid_pin_code").remove();  
             }, 1500);           
         });
+        
         </script>
    
     </head>
@@ -319,10 +314,10 @@ include("header.php");
             <div class="col-md-6 mb-4 pb-2">
                     <div class="form-group">
                         <label class="form-label">Country</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <select class="form-control" >
+                            <select class="form-control" name="type" >
                                 <option value="1" disabled>Choose option</option>
-                                <option value="2">User</option>
-                                <option value="3">Admin</option>
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
                                 
                             </select>
                     </div>
@@ -366,7 +361,7 @@ include("header.php");
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
                         <label class="form-label" >password</label>
-                        <input type="password"  onkeypress="return passwordOnly(event)"  id="password" name="password" class="form-control form-control-lg" value="<?php echo set_value('password'); ?>" />
+                        <input type="password"  onkeypress="return passwordOnly(event)"  id="password" name="password" class="form-control form-control-lg" minlength="8" maxlength="12" value="<?php echo set_value('password'); ?>" />
                         <div style="color:red;"><?php echo form_error('password'); ?>
                         </div>
                         <div  class="error password_error" id="password_error"></div>
@@ -379,7 +374,7 @@ include("header.php");
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
                         <label class="form-label" >Conform password</label>
-                        <input type="password" id="conform_password" onkeypress="return conformpasswordOnly(event)" name="conform_password" class="form-control form-control-lg"  value="<?php echo set_value('conform_password'); ?>"/>
+                        <input type="password" id="conform_password" onkeypress="return conformpasswordOnly(event)" minlength="8" maxlength="12"name="conform_password" class="form-control form-control-lg"  value="<?php echo set_value('conform_password'); ?>"/>
                         <div style="color:red;"><?php echo form_error('conform_password'); ?>
                         </div>
                         <div  class="error conform_password_error" id="conform_password_error"></div>
@@ -473,9 +468,9 @@ include("header.php");
                     <div style="color:red;"><?php echo form_error('street_address'); ?></div></div>
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        <input type="number" maxlength="6" id="pin_code"  name="pin_code" class="form-control form-control-lg"
+                        <input type="text"  id="pin_code"  name="pin_code" class="form-control form-control-lg"
                         onkeypress="return pincodeOnly(event)" value="<?php echo set_value('pin_code'); ?>"
-                        minlength="5" maxlength="6" size="6"/>
+                        minlength="5" maxlength="5"/>
                         <label class="form-label" >Pin code</label>
                             <div style="color:red;"><?php echo form_error('pin_code'); ?>
                             </div>
@@ -486,9 +481,7 @@ include("header.php");
             </div>
 
            
-              <!-- <div class="mt-4 pt-2">
-                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
-              </div> -->
+            
 
               <input type="submit" style="
   background-color: red;
@@ -498,8 +491,8 @@ include("header.php");
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
-" class="btn" value="submit" name="save"/> 
-// <input type="submit" value="Submit" name="save">
+" class="btn" value="save" name="save"/>  
+
             </form>
             
           </div>

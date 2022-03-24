@@ -77,8 +77,8 @@ class User_Register extends CI_Controller
 		//   print_r($_POST);
         //     exit;
         
-		echo "inn <pre>";    print_r($_POST);
-		exit;
+		// echo "inn <pre>";    print_r($_POST);
+		// exit;
 		//  WITHOUT FORM VALIDATION
 			
 		
@@ -97,20 +97,27 @@ class User_Register extends CI_Controller
 	   $this->form_validation->set_rules('password','Password','required|matches[conform_password]');	
 	   $this->form_validation->set_rules('conform_password','Conform password','required|matches[password]');
 	   $this->form_validation->set_rules('image','Image','required');
+	   $this->form_validation->set_rules('con_id','con_id','required');
 	   $this->form_validation->set_rules('phone_no','Phone_no','required');
 	   $this->form_validation->set_rules('street_address','Street_address','required');
 	   $this->form_validation->set_rules('pin_code','Pincode','required');
 
 	   if($this->form_validation->run() === TRUE)
 	   {
-			if(isset($_POST['save'])){ 
+			if(isset($_POST)){ 
+			// 	  print_r($_POST);
+            // exit;
 				$this->RegisterModel->add_register($_POST);
 				$this->session->set_flashdata('sucess','yes');
 				redirect(base_url().'index.php/Dashboard/index');
 				alert("data  inserted");
 			}
 			else{
-			echo "no yes";
+			
+
+				echo "no yes<pre>";
+          
+			
 			
 			}
 		}
