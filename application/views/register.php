@@ -144,7 +144,7 @@ include("header.php");
                 }
                 
                 return passerror;
-            });
+            }
         });
            
         
@@ -298,18 +298,6 @@ include("header.php");
             $("#valid_pin_code").remove();  
             }, 1500);           
         });
-
-        
-<<<<<<< HEAD
-=======
-
-
-
-       
-       
-
-            
->>>>>>> b9a8d7e8ab093addf18f2c55b68ee23bf9579fb7
         </script>
    
     </head>
@@ -502,7 +490,7 @@ include("header.php");
                 <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
               </div> -->
 
-                <!-- <input type="submit" style="
+              <input type="submit" style="
   background-color: red;
   color: white;
   padding: 15px 20px;
@@ -510,8 +498,8 @@ include("header.php");
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
-" class="btn" value="Submit" name="save"/> -->
-<input type="submit" value="Submit" name="save">
+" class="btn" value="submit" name="save"/> 
+// <input type="submit" value="Submit" name="save">
             </form>
             
           </div>
