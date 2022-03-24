@@ -404,7 +404,8 @@ include("header.php");
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-group">
                         <label class="form-label" >Country</label>
-                        <select class="form-control" name="con_id" onkeypress="return countryOnly(event)">
+                        <select class="form-control"  id="con_id" name="con_id" onkeypress="return countryOnly(event)">
+
                         <?php if(!empty($country)) { 
                             foreach($country as $country1){ ?>
                                 
@@ -412,6 +413,11 @@ include("header.php");
                                 <?php } } else {
                               echo "data not found"  ;
                             } ?>
+                        
+                       
+
+
+
                              
                             </select>
                     </div>
@@ -426,7 +432,7 @@ include("header.php");
                         
                          <label class="form-label" >State</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     
-                        <select class="form-control" name="state_id" >
+                        <select class="form-control" id="state_id" name="state_id" >
                         <?php if(!empty($state)) { 
                             foreach($state as $state1){ ?>
                                 
@@ -434,8 +440,9 @@ include("header.php");
                                 <?php } } else {
                               echo "data not found"  ;
                             } ?>
-                             
-                            </select>
+
+
+                        </select>
                     </div>
                    
                 </div> <div style="color:red;"><?php echo form_error('2'); ?></div>
@@ -444,7 +451,9 @@ include("header.php");
                     <div class="form-group">
                         <label class="form-label" >City</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     
-                        <select class="form-control" name="city_id" >
+                        <select class="form-control" id="city_id" name="city_id" >
+                        
+                      
                         <?php if(!empty($city)) { 
                             foreach($city as $city1){ ?>
                                 
@@ -452,8 +461,9 @@ include("header.php");
                                 <?php } } else {
                               echo "data not found"  ;
                             } ?>
-                             
-                            </select>
+                        
+
+                        </select>
                     </div>
                   
                 </div>  <div style="color:red;"><?php echo form_error('3'); ?></div>
@@ -494,6 +504,54 @@ include("header.php");
 " class="btn" value="save" name="save"/>  
 
             </form>
+
+            <script>
+$(document).ready(function(){
+ $('#con_id').change(function(){
+  var con_id = $('#con_id').val();
+  if(con_id != '')
+  {
+   $.ajax({
+    url:"<?php echo base_url(); ?>RegisterModel/country",
+    method:"POST",
+    data:{con_id:con_id},
+    success:function(data)
+    {
+     $('#state_id').html(data);
+     $('#city_id').html('<option value="">Select City</option>');
+    }
+   });
+  }
+  else
+  {
+   $('#state_id').html('<option value="">Select State</option>');
+   $('#city_id').html('<option value="">Select City</option>');
+  }
+ });
+
+ $('#state_id').change(function(){
+  var state_id = $('#state_id').val();
+  if(state_id != '')
+  {
+   $.ajax({
+    url:"<?php echo base_url(); ?>RegisterModel/city",
+    method:"POST",
+    data:{state_id:state_id},
+    success:function(data)
+    {
+     $('#city_id').html(data);
+    }
+   });
+  }
+  else
+  {
+   $('#city').html('<option value="">Select City</option>');
+  }
+ });
+ 
+});
+</script>
+
             
           </div>
         </div>
