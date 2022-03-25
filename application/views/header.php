@@ -1,15 +1,10 @@
-
+<?php
+  $base=$this->config->item('base_url');
+//    include('session_set.php');?>
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
 
-<?php
-     $base=$this->config->item("base_url");
-    // print_r($base);
-    // exit;
-?>
- 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -94,7 +89,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                                 <div class="dropdown-menu">
-                                    <a href="<?php echo $base.'index.php/Login/userlogin';?>"  class="dropdown-item">Login</a>
+                                    <a href="<?php echo $base.'index.php/Login/logout';?>"  class="dropdown-item">Logout</a>
                                     <a href="<?php echo $base.'index.php/User_Register/register';?>"  class="dropdown-item">Register</a>
                                 </div>
                             </div>

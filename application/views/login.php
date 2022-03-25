@@ -1,6 +1,10 @@
 <?php 
 include("header.php");?>
 
+<?php
+    $base = $this->config->item("base_url");
+  ?>
+
 <!-- <section class="h-100 gradient-form" style="background-color: #eee;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -68,35 +72,45 @@ include("header.php");?>
                   
                 </div>
                <br><br>
-                <form>
-     
-
-                  <div class="form-outline mb-4">
-                    <input type="email" id="form2Example11" class="form-control" placeholder="Phone number or email address"/>
-                    <label class="form-label" for="form2Example11">Username</label>
+               
+                <form method="POST" action="<?php echo $base.'index.php/Login/login_validation';?>"> 
+                 <div class="form-outline mb-4">
+                 <label class="form-label" for="form2Example11">Admin Name</label>
+                    <input type="type"  name="first_name" id="form2Example11" class="form-control" placeholder="Please Enter Your Name"/>
+                    
+                    <span class="text-danger"><?php echo form_error('first_name'); ?></span> 
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="form2Example22" class="form-control" />
-                    <label class="form-label" for="form2Example22">Password</label>
+                  <label class="form-label" for="form2Example22">Password</label>
+                    <input type="password" name="password" id="form2Example22" class="form-control"  placeholder="Please Enter Password"/>
+                   
+                    <span class="text-danger"><?php echo form_error('password'); ?></span> 
                   </div>
 
-                  <div class="text-center pt-1 mb-5 pb-1">
+                  <!-- <div class="text-center pt-1 mb-5 pb-1">
                     <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log in</button>
                     <a class="text-muted" href="#!">Forgot password?</a>
-                  </div>
+                  </div> -->
 
-                  <div class="d-flex align-items-center justify-content-center pb-4">
+                  <!-- <div class="d-flex align-items-center justify-content-center pb-4">
                     <p class="mb-0 me-2">Don't have an account?</p>
                     <button type="button" class="btn btn-outline-danger">Create new</button>
-                  </div>
+                  </div> -->
+
+                  <div class="form-group">  
+                     <input type="submit" name="insert" value="Login" class="btn btn-info" />  
+                     <?php  
+                          echo '<label class="text-danger">'.$this->session->flashdata("error").'</label>';  
+                     ?>  
+                  </div>  
 
                 </form>
 
               </div>
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-            <img src="<?php echo $base.'/assets/img/logo2.png';?>" style="width: 500px;" alt="logo">
+            <img src="<?php echo $base.'/assets/img/logo3.png';?>" style="width: 500px;" alt="logo">
             </div>
           </div>
         </div>

@@ -29,12 +29,11 @@ class RegisterModel extends CI_Model
         
         $formArray = array();
 
-      
             // $type=$_POST["2"];
             $formArray  = array(
 
 
-                
+                "type" => $this->input->post('type'),
                 "first_name" => $this->input->post('first_name'),
                 "last_name" => $this->input->post('last_name'),
                 "email" => $this->input->post('email'),
@@ -51,7 +50,7 @@ class RegisterModel extends CI_Model
             // echo "form aRAAY <pre>";
             // print_r($formArray);
             // exit;
-            $this->db->insert("user",$formArray);
+            // $this->db->insert("user",$formArray);
       
     }
 

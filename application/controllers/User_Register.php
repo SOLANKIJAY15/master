@@ -10,8 +10,7 @@ class User_Register extends CI_Controller
 		parent::__construct();
 		$this->load->database();
 		$this->load->helper(array('form', 'url'));
-		
-       $this->load->library('form_validation');
+		$this->load->library('form_validation');
 		$this->load->model('RegisterModel'); 
  
 	}
@@ -83,11 +82,6 @@ class User_Register extends CI_Controller
 		
        //echo "inn";
 
-
-
-
-
-
 	   $this->load->library('form_validation');
 
 	   $this->form_validation->set_rules('first_name','First name','required');
@@ -104,14 +98,6 @@ class User_Register extends CI_Controller
 	   {
 			if(isset($_POST['save'])){ 
 				
-				
-
-				
-
-
-					
-				
-
 				$this->RegisterModel->add_register($_POST);
 				$this->session->set_flashdata('sucess','yes');
 				redirect(base_url().'index.php/Dashboard/index');
@@ -129,6 +115,46 @@ class User_Register extends CI_Controller
 		
 	
 	}
+
+
+
+
+	public function image(){
+		
+		$this->load->helper('url');
+	  
+		// Check form submit or not 
+		if($this->input->post('save') != NULL ){ 
+		   $data = array(); 
+		   if(!empty($_FILES['file']['name'])){ 
+			  // Set preference 
+			  $config['upload_path'] = 'uploads/'; 
+			  $config['allowed_types'] = 'jpg|jpeg|png|gif'; 
+			  $config['max_size'] = '100'; // max_size in kb 
+			  $config['file_name'] = $_FILES['file']['name']; 
+	 
+			  // Load upload library 
+			  $this->load->library('save',$config); 
+		
+			  // File upload
+			  if($this->save->do_upload('file')){ 
+				 // Get data about the file
+				 $uploadData = $this->save->data(); 
+				 $filename = $uploadData['file_name']; 
+				 $data['response'] = 'successfully uploaded '.$filename; 
+			  }else{ 
+				 $data['response'] = 'failed'; 
+			  } 
+		   }else{ 
+			  $data['response'] = 'failed'; 
+		   } 
+		   // load view 
+		   $this->load->view('register',$data); 
+		}else{
+		   // load view 
+		   $this->load->view('register'); 
+		} 
+	  }
 
 
 }

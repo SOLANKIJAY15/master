@@ -1,5 +1,6 @@
 <?php 
 include("header.php");
+
 ?>
 
 <section class="vh-100 gradient-custom">

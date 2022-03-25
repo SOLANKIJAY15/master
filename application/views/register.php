@@ -3,316 +3,303 @@ include("header.php");
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
     <style>
          .error{
             color: #D8000C;
             background-color: #FFBABA;
          }
       </style>
-         
-        <script> 
-        $(document).ready(function() {
-            // function validateForm(e) {
-            $('#myForm').submit(function(e) {
-                e.preventDefault();
-                let passerror = false;
-                
-                /* START FIRST NAME VALIDATION*/
-                let first_name_length = $('#first_name').val();
-                if(!first_name_length){
-                    $('#firstname_error').after("<lable id='valid_firstname' style='color:red;'> please enter First Name </lable>");
-                    return false;
-                }else{
-                    passerror = true;
-                }
-                
-                if(first_name_length.length <=2){ 
-                    $('#firstname_error').after("<lable id='valid_firstname' style='color:red;'> please enter at least five character </lable>");
-                    return false;
-                }else{
-                    $('#valid_firstname').remove();
-                }
-                /*END START FIRST NAME VALIDATION*/
+<script> 
+                $(document).ready(function() {
+                    // function validateForm(e) {
+                    $('#myForm').submit(function(e) {
+                        e.preventDefault();
+                        let passerror = false;
+                        
+                        /* START FIRST NAME VALIDATION*/
+                        let first_name_length = $('#first_name').val();
+                        if(!first_name_length){
+                            $('#firstname_error').after("<lable id='valid_firstname' style='color:red;'> please enter First Name </lable>");
+                            return false;
+                        }else{
+                            passerror = true;
+                        }
+                        
+                        if(first_name_length.length <=2){ 
+                            $('#firstname_error').after("<lable id='valid_firstname' style='color:red;'> please enter at least five character </lable>");
+                            return false;
+                        }else{
+                            $('#valid_firstname').remove();
+                        }
+                        /*END START FIRST NAME VALIDATION*/
 
-                let last_name_nlength = $('#last_name').val();
-                var ls = /^[A-Za-z]+$/;
-                if(last_name_nlength.match(ls)){
-                    passerror = true;
-                    $('#valid_lastname').remove();
-                }else{
-                    $('#lastname_error').after("<lable id='valid_lastname' style='color:red;'> please enter last name </lable>");
-                    return false;
-                }
+                        let last_name_nlength = $('#last_name').val();
+                        var ls = /^[A-Za-z]+$/;
+                        if(last_name_nlength.match(ls)){
+                            passerror = true;
+                            $('#valid_lastname').remove();
+                        }else{
+                            $('#lastname_error').after("<lable id='valid_lastname' style='color:red;'> please enter last name </lable>");
+                            return false;
+                        }
 
-                /* START EMAIL FORM VALIDATION*/
-                
-                let email = $('#email').val();
-                var ml = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-                if(email.match(ml)){    
-                    passerror = true;
-                    $('#valid_email').remove();
-                }else{
+                        /* START EMAIL FORM VALIDATION*/
+                        
+                        let email = $('#email').val();
+                        var ml = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                        if(email.match(ml)){    
+                            passerror = true;
+                            $('#valid_email').remove();
+                        }else{
+                            
+                            $('#lastname_error').after("<lable id='valid_email' style='color:red;'> please enter valid email </lable>");
+                            return false;
+                        }
+
+                        let password = $('#password').val();
+                        var pas =/^[A-Za-z0-9]+$/;
+                        if(password.match(pas)){
+                            passerror = true;
+                            $('#valid_password').remove();
+                        }else{
+                            $('#password_error').after("<lable id='valid_password' style='color:red;'> please enter password </lable>");
+                            return false;
+                        }
+
+                        let conform_password = $('#conform_password').val();
+                        var pas =/^[A-Za-z0-9]+$/;
+                        if(conform_password.match(pas)){
+                            passerror = true;
+                            $('#valid_conform_password').remove();
+                        }else{
+                            $('#conform_password_error').after("<lable id='valid_conform_password' style='color:red;'> please enter Conform Password </lable>");
+                            return false;
+                        }
+
+
+                        var ps1 = $('#password').val();
+                        
+                        var cs1 = $('#conform_password').val();
+                        if (ps1 != cs1) {
+                            $('#conform_password_error').after("<lable id='valid_conform_password' style='color:red;'> DOES NOT MATCH PASSWORD </lable>");
+                            return false;
+                        }
+                        else{
+                            $('#valid_conform_password').remove();
+                        }
                     
-                    $('#lastname_error').after("<lable id='valid_email' style='color:red;'> please enter valid email </lable>");
-                    return false;
+                    
+                        let file = $('#file').val();
+                    
+                        if(file){
+                            passerror = true;
+                            $('#valid_image').remove();
+                        }else{
+                            $('#image_error').after("<lable id='valid_image' style='color:red;'> please enter Image </lable>");
+                            return false;
+                        }
+
+
+                        // var phone = document.forms["myForm"]["phone_no"].value;
+                        // var phoneNum = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/; 
+                        // if(phone.value.match(phoneNum)) {
+                        //     return true;
+                        // }
+                        // else {
+                        //     document.getElementById("phone_no").className = document.getElementById("phone_no").className + " error";
+                        //     return false;
+                        // }
+                        // var phone = document.forms["myForm"]["phone_no"].value;
+                        // var phone_no = /^\d{10}$/;
+
+                        let phone_no = $('#phone_no').val();
+                        var phn =/^[0-9]+$/;
+                        if(phone_no.match(phn)){
+                            passerror = true;
+                            $('#valid_phone_no').remove();
+                        }else{
+                            $('#phone_no_error').after("<lable id='valid_phone_no' style='color:red;'> please 10 NUMBERS ONLY! </lable>");
+                            return false;
+                        }
+
+
+                        let pin_code = $('#pin_code').val();
+                        var pin =/^[0-9]+$/;
+                        if(pin_code.match(pin)){
+                            passerror = true;
+                            $('#valid_pin_code').remove();
+                        }else{
+                            $('#pin_code_error').after("<lable id='valid_pin_code' style='color:red;'> please ENTER 6 numbers only </lable>");
+                            return false;
+                        }
+
+                
+                        
+                        if(error>0) {
+                            return false;
+                        }
+                        
+                        return passerror;
+                    }
+                });
+                
+                
+                function lettersOnly(){
+                    
+                    var charCode = event.keyCode;
+                    if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8){
+                        
+                        return true;
+                        $("#valid_firstname").remove();             
+                    }else{ 
+                        $("#valid_firstname").remove();
+                        $('.firstname_error').after("<lable id='valid_firstname' style='color:red;'> please enter Alphabetic Characters </lable>");
+                        return false;
+                    }
                 }
 
-                let password = $('#password').val();
-                var pas =/^[A-Za-z0-9]+$/;
-                if(password.match(pas)){
-                    passerror = true;
-                    $('#valid_password').remove();
-                }else{
-                    $('#password_error').after("<lable id='valid_password' style='color:red;'> please enter password </lable>");
-                    return false;
+                $(document).on('change keypress', '#first_name', function(){
+                    setTimeout(function(){
+                    
+                    $("#valid_firstname").remove();  
+                    }, 1500);           
+                });
+
+                
+                function lslettersOnly(){
+                    
+                    var charCode = event.keyCode;
+                    if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8){
+                        
+                        return true;
+                        $("#valid_lastname").remove();             
+                    }else{ 
+                        $("#valid_lastname").remove();
+                        $('.lastname_error').after("<lable id='valid_lastname' style='color:red;'> please enter Alphabetic Characters </lable>");
+                        return false;
+                    }
                 }
 
-                let conform_password = $('#conform_password').val();
-                var pas =/^[A-Za-z0-9]+$/;
-                if(conform_password.match(pas)){
-                    passerror = true;
-                    $('#valid_conform_password').remove();
-                }else{
-                    $('#conform_password_error').after("<lable id='valid_conform_password' style='color:red;'> please enter Conform Password </lable>");
-                    return false;
+                $(document).on('change keypress', '#last_name', function(){
+                    setTimeout(function(){
+                    
+                    $("#valid_lastname").remove();  
+                    }, 1500);           
+                });
+
+
+                function emailOnly(){
+                    
+                    var charCode = event.keyCode;
+                    if ((charCode >= 64 && charCode < 91) || (charCode >= 46 && charCode < 57) || (charCode > 96 && charCode < 123) || charCode == 8){
+                        
+                        return true;
+                        $("#valid_email").remove();             
+                    }else{ 
+                        $("#valid_email").remove();
+                        $('.email_error').after("<lable id='valid_email' style='color:red;'> please enter Valid Email </lable>");
+                        return false;
+                    }
                 }
 
+                $(document).on('change keypress', '#email', function(){
+                    setTimeout(function(){
+                    
+                    $("#valid_email").remove();  
+                    }, 1500);           
+                });
 
-                var ps1 = $('#password').val();
                 
-                var cs1 = $('#conform_password').val();
-                if (ps1 != cs1) {
-                    $('#conform_password_error').after("<lable id='valid_conform_password' style='color:red;'> DOES NOT MATCH PASSWORD </lable>");
-                    return false;
-                }
-                else{
-                    $('#valid_conform_password').remove();
-                }
-              
-            
-                let image = $('#image').val();
-               
-                if(image){
-                    passerror = true;
-                    $('#valid_image').remove();
-                }else{
-                    $('#image_error').after("<lable id='valid_image' style='color:red;'> please enter Image </lable>");
-                    return false;
-                }
-
-
-                // var phone = document.forms["myForm"]["phone_no"].value;
-                // var phoneNum = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/; 
-                // if(phone.value.match(phoneNum)) {
-                //     return true;
-                // }
-                // else {
-                //     document.getElementById("phone_no").className = document.getElementById("phone_no").className + " error";
-                //     return false;
-                // }
-                // var phone = document.forms["myForm"]["phone_no"].value;
-                // var phone_no = /^\d{10}$/;
-
-                let phone_no = $('#phone_no').val();
-                var phn =/^[0-9]+$/;
-                if(phone_no.match(phn)){
-                    passerror = true;
-                    $('#valid_phone_no').remove();
-                }else{
-                    $('#phone_no_error').after("<lable id='valid_phone_no' style='color:red;'> please 10 NUMBERS ONLY! </lable>");
-                    return false;
+                function passwordOnly(){
+                    
+                    var charCode = event.keyCode;
+                    if ((charCode >= 64 && charCode < 91) || (charCode >= 46 && charCode <= 57) || (charCode > 96 && charCode < 123) || charCode == 8){
+                        
+                        return true;
+                        $("#valid_password").remove();             
+                    }else{ 
+                        $("#valid_password").remove();
+                        $('.password_error').after("<lable id='valid_password' style='color:red;'> please enter Password in only A-Za-z0-9 @  </lable>");
+                        return false;
+                    }
                 }
 
-
-                let pin_code = $('#pin_code').val();
-                var pin =/^[0-9]+$/;
-                if(pin_code.match(pin)){
-                    passerror = true;
-                    $('#valid_pin_code').remove();
-                }else{
-                    $('#pin_code_error').after("<lable id='valid_pin_code' style='color:red;'> please ENTER 6 numbers only </lable>");
-                    return false;
+                $(document).on('change keypress', '#password', function(){
+                    setTimeout(function(){
+                    
+                    $("#valid_password").remove();  
+                    }, 1500);           
+                });
+            //Conform Password Form validation
+                function conformpasswordOnly(){
+                    
+                    var charCode = event.keyCode;
+                    if ((charCode >= 64 && charCode < 91) || (charCode >= 46 && charCode <= 57) || (charCode > 96 && charCode < 123) || charCode == 8){
+                        
+                        return true;
+                        $("#valid_conform_password").remove();             
+                    }else{ 
+                        $("#valid_conform_password").remove();
+                        $('.conform_password_error').after("<lable id='valid_conform_password' style='color:red;'> please enter conform Password in only A-Za-z0-9 @ </lable>");
+                        return false;
+                    }
                 }
 
-          
-                
-                if(error>0) {
-                    return false;
+                $(document).on('change keypress', '#conform_password', function(){
+                    setTimeout(function(){
+                    
+                    $("#valid_conform_password").remove();  
+                    }, 1500);           
+                });
+
+
+                function phoneNoOnly(){
+                    
+                    var charCode = event.keyCode;
+                    if (charCode >= 48 && charCode <= 57 ){
+                        
+                        return true;
+                        $("#valid_phone_no").remove();             
+                    }else{ 
+                        $("#valid_phone_no").remove();
+                        $('.phone_no_error').after("<lable id='valid_phone_no' style='color:red;'> please Enter Only Numbers </lable>");
+                        return false;
+                    }
                 }
+
+                $(document).on('change keypress', '#phone_no', function(){
+                    setTimeout(function(){
+                    
+                    $("#valid_phone_no").remove();  
+                    }, 1500);           
+                });
                 
-                return passerror;
-            }
-        });
-           
-        
-        function lettersOnly(){
-            
-            var charCode = event.keyCode;
-            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8){
+                function pincodeOnly(){
+                    
+                    var charCode = event.keyCode;
+                    if (charCode >= 48 && charCode <= 57 ){
+                        
+                        return true;
+                        $("#valid_pin_code").remove();             
+                    }else{ 
+                        $("#valid_pin_code").remove();
+                        $('.pin_code_error').after("<lable id='valid_pin_code' style='color:red;'> please Enter Only 6 Numbers </lable>");
+                        return false;
+                    }
+                }
+
+                $(document).on('change keypress', '#pin_code', function(){
+                    setTimeout(function(){
+                    
+                    $("#valid_pin_code").remove();  
+                    }, 1500);           
+                });
+
                 
-                return true;
-                $("#valid_firstname").remove();             
-            }else{ 
-                $("#valid_firstname").remove();
-                $('.firstname_error').after("<lable id='valid_firstname' style='color:red;'> please enter Alphabetic Characters </lable>");
-                return false;
-            }
-        }
-
-        $(document).on('change keypress', '#first_name', function(){
-            setTimeout(function(){
-             
-            $("#valid_firstname").remove();  
-            }, 1500);           
-        });
-
-         
-        function lslettersOnly(){
-            
-            var charCode = event.keyCode;
-            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8){
-                
-                return true;
-                $("#valid_lastname").remove();             
-            }else{ 
-                $("#valid_lastname").remove();
-                $('.lastname_error').after("<lable id='valid_lastname' style='color:red;'> please enter Alphabetic Characters </lable>");
-                return false;
-            }
-        }
-
-        $(document).on('change keypress', '#last_name', function(){
-            setTimeout(function(){
-             
-            $("#valid_lastname").remove();  
-            }, 1500);           
-        });
-
-
-        function emailOnly(){
-            
-            var charCode = event.keyCode;
-            if ((charCode >= 64 && charCode < 91) || (charCode >= 46 && charCode < 57) || (charCode > 96 && charCode < 123) || charCode == 8){
-                
-                return true;
-                $("#valid_email").remove();             
-            }else{ 
-                $("#valid_email").remove();
-                $('.email_error').after("<lable id='valid_email' style='color:red;'> please enter Valid Email </lable>");
-                return false;
-            }
-        }
-
-        $(document).on('change keypress', '#email', function(){
-            setTimeout(function(){
-             
-            $("#valid_email").remove();  
-            }, 1500);           
-        });
-
-         
-        function passwordOnly(){
-            
-            var charCode = event.keyCode;
-            if ((charCode >= 64 && charCode < 91) || (charCode >= 46 && charCode <= 57) || (charCode > 96 && charCode < 123) || charCode == 8){
-                
-                return true;
-                $("#valid_password").remove();             
-            }else{ 
-                $("#valid_password").remove();
-                $('.password_error').after("<lable id='valid_password' style='color:red;'> please enter Password in only A-Za-z0-9 @  </lable>");
-                return false;
-            }
-        }
-
-        $(document).on('change keypress', '#password', function(){
-            setTimeout(function(){
-             
-            $("#valid_password").remove();  
-            }, 1500);           
-        });
-       //Conform Password Form validation
-        function conformpasswordOnly(){
-            
-            var charCode = event.keyCode;
-            if ((charCode >= 64 && charCode < 91) || (charCode >= 46 && charCode <= 57) || (charCode > 96 && charCode < 123) || charCode == 8){
-                
-                return true;
-                $("#valid_conform_password").remove();             
-            }else{ 
-                $("#valid_conform_password").remove();
-                $('.conform_password_error').after("<lable id='valid_conform_password' style='color:red;'> please enter conform Password in only A-Za-z0-9 @ </lable>");
-                return false;
-            }
-        }
-
-        $(document).on('change keypress', '#conform_password', function(){
-            setTimeout(function(){
-             
-            $("#valid_conform_password").remove();  
-            }, 1500);           
-        });
-
-
-        function phoneNoOnly(){
-            
-            var charCode = event.keyCode;
-            if (charCode >= 48 && charCode <= 57 ){
-                
-                return true;
-                $("#valid_phone_no").remove();             
-            }else{ 
-                $("#valid_phone_no").remove();
-                $('.phone_no_error').after("<lable id='valid_phone_no' style='color:red;'> please Enter Only Numbers </lable>");
-                return false;
-            }
-        }
-
-        $(document).on('change keypress', '#phone_no', function(){
-            setTimeout(function(){
-             
-            $("#valid_phone_no").remove();  
-            }, 1500);           
-        });
-        
-        function pincodeOnly(){
-            
-            var charCode = event.keyCode;
-            if (charCode >= 48 && charCode <= 57 ){
-                
-                return true;
-                $("#valid_pin_code").remove();             
-            }else{ 
-                $("#valid_pin_code").remove();
-                $('.pin_code_error').after("<lable id='valid_pin_code' style='color:red;'> please Enter Only 6 Numbers </lable>");
-                return false;
-            }
-        }
-
-        $(document).on('change keypress', '#pin_code', function(){
-            setTimeout(function(){
-             
-            $("#valid_pin_code").remove();  
-            }, 1500);           
-        });
-
-        
-<<<<<<< HEAD
-=======
-
-
-
-       
-       
-
-            
->>>>>>> b9a8d7e8ab093addf18f2c55b68ee23bf9579fb7
-        </script>
-   
-    </head>
+</script>
+</head>
 <body>
-
 <section class="vh-150 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
@@ -320,19 +307,20 @@ include("header.php");
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-            <!-- REGISTER FORM START -->
+            // REGISTER FORM START 
          
 
-            <form name="myForm"  onsubmit="return validateForm()" action="<?php echo base_url().'index.php/User_Register/add_register'; ?>" method="post"> 
+            <form name="myForm"  method="post" onsubmit="return validateForm()" enctype='multipart/form-data' action="<?php echo base_url().'index.php/User_Register/add_register'; ?>"> 
+            
             <br><br>
             <div class="row">
             <div class="col-md-6 mb-4 pb-2">
                     <div class="form-group">
                         <label class="form-label">Country</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <select class="form-control" >
+                            <select class="form-control" name="type">
                                 <option value="1" disabled>Choose option</option>
-                                <option value="2">User</option>
-                                <option value="3">Admin</option>
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
                                 
                             </select>
                     </div>
@@ -399,11 +387,15 @@ include("header.php");
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
                         <label class="form-label">Upload image</label>    
-                        <input class="form-control form-control-lg" id="image"  name="image"  type="file" value="<?php echo set_value('image'); ?>" />
+                        <b><?php if(isset($response)) echo $response; ?></b>
+                        <input class="form-control form-control-lg" id="image"  name="file"  type="file" value="<?php echo set_value('image'); ?>" />
+                           
+                            
                     </div>
-                <div style="color:red;"><?php echo form_error('image'); ?></div>
-        </div>
+                <div style="color:red;"><?php echo form_error('file'); ?></div>
+                </div>
             </div>
+
 
             <div class="row">
                 <div class="col-md-6 mb-4 pb-2">
@@ -432,11 +424,11 @@ include("header.php");
                     </div>
                     
                 </div>
-                            </div>
+            </div>
 
 
             <div class="row">
-            <div class="col-md-6 mb-4 pb-2">
+             <div class="col-md-6 mb-4 pb-2">
                     <div class="form-group">
                         
                          <label class="form-label" >State</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -450,7 +442,7 @@ include("header.php");
                               echo "data not found"  ;
                             } ?>
                              
-                            </select>
+                        </select>
                     </div>
                    
                 </div> <div style="color:red;"><?php echo form_error('2'); ?></div>
@@ -480,7 +472,8 @@ include("header.php");
                         <input type="text" name="street_address" id="street_address"  class="form-control form-control-lg" value="<?php echo set_value('street_address'); ?>" />
                         <label class="form-label">Street Address</label>
                     </div>
-                    <div style="color:red;"><?php echo form_error('street_address'); ?></div></div>
+                    <div style="color:red;"><?php echo form_error('street_address'); ?></div>
+                </div>
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
                         <input type="number" maxlength="6" id="pin_code"  name="pin_code" class="form-control form-control-lg"
@@ -497,7 +490,8 @@ include("header.php");
 
            
               <!-- <div class="mt-4 pt-2">
-                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                <input class="btn btn-primary btn-lg" type="submit" value="Submit" name="save" />
+              
               </div> -->
 
                 <input type="submit" style="
@@ -508,7 +502,7 @@ include("header.php");
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
-" class="btn" value="Submit" name="save">Submit
+" class="btn" value="submit" name="save">Submit
 
             </form>
             
@@ -519,5 +513,5 @@ include("header.php");
   </div>
 </section>
 
-    </body>
-    </html>
+</body>
+</html>
