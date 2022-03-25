@@ -62,7 +62,8 @@ class User_Register extends CI_Controller
 	// 	$data['city'] = $city;
 	// 	$this->load->view('register',$data);
 	// }
-
+	
+	
 
 	public function register1()
 	{
@@ -90,21 +91,32 @@ class User_Register extends CI_Controller
 	   $this->form_validation->set_rules('password','Password','required|matches[conform_password]');	
 	   $this->form_validation->set_rules('conform_password','Conform password','required|matches[password]');
 	   $this->form_validation->set_rules('image','Image','required');
+	   $this->form_validation->set_rules('con_id','con_id','required');
 	   $this->form_validation->set_rules('phone_no','Phone_no','required');
 	   $this->form_validation->set_rules('street_address','Street_address','required');
 	   $this->form_validation->set_rules('pin_code','Pincode','required');
 
 	   if($this->form_validation->run() === TRUE)
 	   {
+<<<<<<< HEAD
 			if(isset($_POST['save'])){ 
 				
+=======
+			if(isset($_POST)){ 
+			// 	  print_r($_POST);
+            // exit;
+>>>>>>> 2624b000ff7eccfdd63ac74c04eccee9fb5b6caa
 				$this->RegisterModel->add_register($_POST);
 				$this->session->set_flashdata('sucess','yes');
 				redirect(base_url().'index.php/Dashboard/index');
 				alert("data  inserted");
 			}
 			else{
-			echo "no yes";
+			
+
+				echo "no yes<pre>";
+          
+			
 			
 			}
 		}

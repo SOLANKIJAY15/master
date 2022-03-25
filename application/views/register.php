@@ -3,13 +3,19 @@ include("header.php");
 ?>
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
+=======
+    <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+>>>>>>> 2624b000ff7eccfdd63ac74c04eccee9fb5b6caa
     <style>
          .error{
             color: #D8000C;
             background-color: #FFBABA;
          }
       </style>
+<<<<<<< HEAD
 <script> 
                 $(document).ready(function() {
                     // function validateForm(e) {
@@ -134,6 +140,17 @@ include("header.php");
                             return false;
                         }
 
+=======
+         
+        <script> 
+        $(document).ready(function() {
+            // function validateForm(e) {
+            $('#myForm').submit(function(e) {
+
+
+                e.preventDefault();
+                let passerror = false;
+>>>>>>> 2624b000ff7eccfdd63ac74c04eccee9fb5b6caa
                 
                         
                         if(error>0) {
@@ -181,6 +198,7 @@ include("header.php");
                     }
                 }
 
+<<<<<<< HEAD
                 $(document).on('change keypress', '#last_name', function(){
                     setTimeout(function(){
                     
@@ -201,6 +219,26 @@ include("header.php");
                         $('.email_error').after("<lable id='valid_email' style='color:red;'> please enter Valid Email </lable>");
                         return false;
                     }
+=======
+                let password = $('#password').val();
+                var pas =/^[A-Za-z0-9]{12}+$/;
+                if(password.match(pas)){
+                    passerror = true;
+                    $('#valid_password').remove();
+                }else{
+                    $('#password_error').after("<lable id='valid_password' style='color:red;'> please enter password </lable>");
+                    return false;
+                }
+
+                let conform_password = $('#conform_password').val();
+                var pas =/^[A-Za-z0-9]{12}+$/;
+                if(conform_password.match(pas)){
+                    passerror = true;
+                    $('#valid_conform_password').remove();
+                }else{
+                    $('#conform_password_error').after("<lable id='valid_conform_password' style='color:red;'> please enter Conform Password </lable>");
+                    return false;
+>>>>>>> 2624b000ff7eccfdd63ac74c04eccee9fb5b6caa
                 }
 
                 $(document).on('change keypress', '#email', function(){
@@ -254,6 +292,7 @@ include("header.php");
                 });
 
 
+<<<<<<< HEAD
                 function phoneNoOnly(){
                     
                     var charCode = event.keyCode;
@@ -299,6 +338,176 @@ include("header.php");
                 
 </script>
 </head>
+=======
+                let pin_code = $('#pin_code').val();
+                var pin =/^[1-9][0-9]{6}$/;
+                if(pin_code.match(pin)){
+                    passerror = true;
+                    $('#valid_pin_code').remove();
+                }else{
+                    $('#pin_code_error').after("<lable id='valid_pin_code' style='color:red;'> please ENTER 6 numbers only </lable>");
+                    return false;
+                }
+
+                if(passerror==true){
+                 $(myForm).find('button[type="submit"]').attr('disabled', 'disabled');
+                myForm.submit();
+                }           
+                
+                // if(error>0) {
+                //     return false;
+                // }
+                
+                 //return passerror;
+            });
+        });
+         
+        
+        function lettersOnly(){
+            
+            var charCode = event.keyCode;
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8){
+                
+                return true;
+                $("#valid_firstname").remove();             
+            }else{ 
+                $("#valid_firstname").remove();
+                $('.firstname_error').after("<lable id='valid_firstname' style='color:red;'> please enter Alphabetic Characters </lable>");
+                return false;
+            }
+        }
+        $(document).on('change keypress', '#first_name', function(){
+            setTimeout(function(){
+             
+            $("#valid_firstname").remove();  
+            }, 1500);           
+        });
+        
+        function lslettersOnly(){
+            
+            var charCode = event.keyCode;
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8){
+                
+                return true;
+                $("#valid_lastname").remove();             
+            }else{ 
+                $("#valid_lastname").remove();
+                $('.lastname_error').after("<lable id='valid_lastname' style='color:red;'> please enter Alphabetic Characters </lable>");
+                return false;
+            }
+        }
+        $(document).on('change keypress', '#last_name', function(){
+            setTimeout(function(){
+             
+            $("#valid_lastname").remove();  
+            }, 1500);           
+        });
+
+        function emailOnly(){
+            
+            var charCode = event.keyCode;
+            if ((charCode >= 64 && charCode < 91) || (charCode >= 46 && charCode < 57) || (charCode > 96 && charCode < 123) || charCode == 8){
+                
+                return true;
+                $("#valid_email").remove();             
+            }else{ 
+                $("#valid_email").remove();
+                $('.email_error').after("<lable id='valid_email' style='color:red;'> please enter Valid Email </lable>");
+                return false;
+            }
+        }
+        $(document).on('change keypress', '#email', function(){
+            setTimeout(function(){
+             
+            $("#valid_email").remove();  
+            }, 1500);           
+        });
+ 
+        function passwordOnly(){
+            
+            var charCode = event.keyCode;
+            if ((charCode >= 64 && charCode < 91) || (charCode >= 46 && charCode <= 57) || (charCode > 96 && charCode < 123) || charCode == 8){
+                
+                return true;
+                $("#valid_password").remove();             
+            }else{ 
+                $("#valid_password").remove();
+                $('.password_error').after("<lable id='valid_password' style='color:red;'> please enter Password in only A-Za-z0-9 @  </lable>");
+                return false;
+            }
+        }
+        $(document).on('change keypress', '#password', function(){
+            setTimeout(function(){
+             
+            $("#valid_password").remove();  
+            }, 1500);           
+        });
+
+       //Conform Password Form validation
+        function conformpasswordOnly(){
+            
+            var charCode = event.keyCode;
+            if ((charCode >= 64 && charCode < 91) || (charCode >= 46 && charCode <= 57) || (charCode > 96 && charCode < 123) || charCode == 8){
+                
+                return true;
+                $("#valid_conform_password").remove();             
+            }else{ 
+                $("#valid_conform_password").remove();
+                $('.conform_password_error').after("<lable id='valid_conform_password' style='color:red;'> please enter conform Password in only A-Za-z0-9 @ </lable>");
+                return false;
+            }
+        }
+        $(document).on('change keypress', '#conform_password', function(){
+            setTimeout(function(){
+             
+            $("#valid_conform_password").remove();  
+            }, 1500);           
+        });
+
+        function phoneNoOnly(){
+            
+            var charCode = event.keyCode;
+            if (charCode >= 48 && charCode <= 57 ){
+                
+                return true;
+                $("#valid_phone_no").remove();             
+            }else{ 
+                $("#valid_phone_no").remove();
+                $('.phone_no_error').after("<lable id='valid_phone_no' style='color:red;'> please Enter Only Numbers </lable>");
+                return false;
+            }
+        }
+        $(document).on('change keypress', '#phone_no', function(){
+            setTimeout(function(){
+             
+            $("#valid_phone_no").remove();  
+            }, 1500);           
+        });
+        
+        function pincodeOnly(){
+            
+            var charCode = event.keyCode;
+            if (charCode >= 48 && charCode <= 57 ){
+                
+                return true;
+                $("#valid_pin_code").remove();             
+            }else{ 
+                $("#valid_pin_code").remove();
+                $('.pin_code_error').after("<lable id='valid_pin_code' style='color:red;'> please Enter Only 6 Numbers </lable>");
+                return false;
+            }
+        }
+        $(document).on('change keypress', '#pin_code', function(){
+            setTimeout(function(){
+             
+            $("#valid_pin_code").remove();  
+            }, 1500);           
+        });
+        
+        </script>
+   
+    </head>
+>>>>>>> 2624b000ff7eccfdd63ac74c04eccee9fb5b6caa
 <body>
 <section class="vh-150 gradient-custom">
   <div class="container py-5 h-100">
@@ -309,15 +518,24 @@ include("header.php");
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
             // REGISTER FORM START 
          
+<<<<<<< HEAD
 
             <form name="myForm"  method="post" onsubmit="return validateForm()" enctype='multipart/form-data' action="<?php echo base_url().'index.php/User_Register/add_register'; ?>"> 
             
+=======
+            <!--  -->
+            <form name="myForm" id="myForm" action="<?php echo base_url().'index.php/User_Register/add_register'; ?>" method="post"> 
+>>>>>>> 2624b000ff7eccfdd63ac74c04eccee9fb5b6caa
             <br><br>
             <div class="row">
             <div class="col-md-6 mb-4 pb-2">
                     <div class="form-group">
                         <label class="form-label">Country</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<<<<<<< HEAD
                             <select class="form-control" name="type">
+=======
+                            <select class="form-control" name="type" >
+>>>>>>> 2624b000ff7eccfdd63ac74c04eccee9fb5b6caa
                                 <option value="1" disabled>Choose option</option>
                                 <option value="user">User</option>
                                 <option value="admin">Admin</option>
@@ -364,7 +582,7 @@ include("header.php");
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
                         <label class="form-label" >password</label>
-                        <input type="password"  onkeypress="return passwordOnly(event)"  id="password" name="password" class="form-control form-control-lg" value="<?php echo set_value('password'); ?>" />
+                        <input type="password"  onkeypress="return passwordOnly(event)"  id="password" name="password" class="form-control form-control-lg" minlength="8" maxlength="12" value="<?php echo set_value('password'); ?>" />
                         <div style="color:red;"><?php echo form_error('password'); ?>
                         </div>
                         <div  class="error password_error" id="password_error"></div>
@@ -377,7 +595,7 @@ include("header.php");
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-outline">
                         <label class="form-label" >Conform password</label>
-                        <input type="password" id="conform_password" onkeypress="return conformpasswordOnly(event)" name="conform_password" class="form-control form-control-lg"  value="<?php echo set_value('conform_password'); ?>"/>
+                        <input type="password" id="conform_password" onkeypress="return conformpasswordOnly(event)" minlength="8" maxlength="12"name="conform_password" class="form-control form-control-lg"  value="<?php echo set_value('conform_password'); ?>"/>
                         <div style="color:red;"><?php echo form_error('conform_password'); ?>
                         </div>
                         <div  class="error conform_password_error" id="conform_password_error"></div>
@@ -411,7 +629,8 @@ include("header.php");
                 <div class="col-md-6 mb-4 pb-2">
                     <div class="form-group">
                         <label class="form-label" >Country</label>
-                        <select class="form-control" name="con_id" onkeypress="return countryOnly(event)">
+                        <select class="form-control"  id="con_id" name="con_id" onkeypress="return countryOnly(event)">
+
                         <?php if(!empty($country)) { 
                             foreach($country as $country1){ ?>
                                 
@@ -419,6 +638,11 @@ include("header.php");
                                 <?php } } else {
                               echo "data not found"  ;
                             } ?>
+                        
+                       
+
+
+
                              
                             </select>
                     </div>
@@ -433,7 +657,7 @@ include("header.php");
                         
                          <label class="form-label" >State</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     
-                        <select class="form-control" name="con_id" >
+                        <select class="form-control" id="state_id" name="state_id" >
                         <?php if(!empty($state)) { 
                             foreach($state as $state1){ ?>
                                 
@@ -441,7 +665,12 @@ include("header.php");
                                 <?php } } else {
                               echo "data not found"  ;
                             } ?>
+<<<<<<< HEAD
                              
+=======
+
+
+>>>>>>> 2624b000ff7eccfdd63ac74c04eccee9fb5b6caa
                         </select>
                     </div>
                    
@@ -451,7 +680,9 @@ include("header.php");
                     <div class="form-group">
                         <label class="form-label" >City</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     
-                        <select class="form-control" name="con_id" >
+                        <select class="form-control" id="city_id" name="city_id" >
+                        
+                      
                         <?php if(!empty($city)) { 
                             foreach($city as $city1){ ?>
                                 
@@ -459,8 +690,9 @@ include("header.php");
                                 <?php } } else {
                               echo "data not found"  ;
                             } ?>
-                             
-                            </select>
+                        
+
+                        </select>
                     </div>
                   
                 </div>  <div style="color:red;"><?php echo form_error('3'); ?></div>
@@ -476,9 +708,9 @@ include("header.php");
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                        <input type="number" maxlength="6" id="pin_code"  name="pin_code" class="form-control form-control-lg"
+                        <input type="text"  id="pin_code"  name="pin_code" class="form-control form-control-lg"
                         onkeypress="return pincodeOnly(event)" value="<?php echo set_value('pin_code'); ?>"
-                        minlength="5" maxlength="6" size="6"/>
+                        minlength="5" maxlength="5"/>
                         <label class="form-label" >Pin code</label>
                             <div style="color:red;"><?php echo form_error('pin_code'); ?>
                             </div>
@@ -489,12 +721,16 @@ include("header.php");
             </div>
 
            
+<<<<<<< HEAD
               <!-- <div class="mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" type="submit" value="Submit" name="save" />
               
               </div> -->
+=======
+            
+>>>>>>> 2624b000ff7eccfdd63ac74c04eccee9fb5b6caa
 
-                <input type="submit" style="
+              <input type="submit" style="
   background-color: red;
   color: white;
   padding: 15px 20px;
@@ -502,9 +738,61 @@ include("header.php");
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+<<<<<<< HEAD
 " class="btn" value="submit" name="save">Submit
+=======
+" class="btn" value="save" name="save"/>  
+>>>>>>> 2624b000ff7eccfdd63ac74c04eccee9fb5b6caa
 
             </form>
+
+            <script>
+$(document).ready(function(){
+ $('#con_id').change(function(){
+  var con_id = $('#con_id').val();
+  if(con_id != '')
+  {
+   $.ajax({
+    url:"<?php echo base_url(); ?>RegisterModel/country",
+    method:"POST",
+    data:{con_id:con_id},
+    success:function(data)
+    {
+     $('#state_id').html(data);
+     $('#city_id').html('<option value="">Select City</option>');
+    }
+   });
+  }
+  else
+  {
+   $('#state_id').html('<option value="">Select State</option>');
+   $('#city_id').html('<option value="">Select City</option>');
+  }
+ });
+
+ $('#state_id').change(function(){
+  var state_id = $('#state_id').val();
+  if(state_id != '')
+  {
+   $.ajax({
+    url:"<?php echo base_url(); ?>RegisterModel/city",
+    method:"POST",
+    data:{state_id:state_id},
+    success:function(data)
+    {
+     $('#city_id').html(data);
+    }
+   });
+  }
+  else
+  {
+   $('#city').html('<option value="">Select City</option>');
+  }
+ });
+ 
+});
+</script>
+
             
           </div>
         </div>
