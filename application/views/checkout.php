@@ -29,7 +29,7 @@ include("session_set.php");
                                         <input class="form-control" type="text" placeholder="First Name">
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Last Name"</label>
+                                        <label>Last Name</label>
                                         <input class="form-control" type="text" placeholder="Last Name">
                                     </div>
                                     <div class="col-md-6">

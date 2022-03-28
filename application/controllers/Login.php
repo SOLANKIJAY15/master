@@ -19,7 +19,7 @@ class Login extends CI_Controller {
 		 {  
 			  //http://localhost/tutorial/codeigniter/main/login  
 			  
-			  $data['first_name'] = 'CodeIgniter Simple Login Form With Sessions';  
+			  $data['email'] = 'CodeIgniter Simple Login Form With Sessions';  
 			  $this->load->view("login", $data);  
 		 }  
 	 
@@ -27,26 +27,34 @@ class Login extends CI_Controller {
 		 {  
 			  $this->load->library('form_validation');  
 			  $this->load->library('session');  
-			  $this->form_validation->set_rules('first_name', 'First Name', 'required');  
+			  $this->form_validation->set_rules('email', 'Email', 'required');  
 			  $this->form_validation->set_rules('password', 'Password', 'required');  
 			  if($this->form_validation->run())  
 			  {  
 				   //true  
-				   $username = $this->input->post('first_name');  
+				   $email = $this->input->post('email');  
 				   $password = $this->input->post('password');  
 				   //model function  
 				   $this->load->model('LoginModel');  
-				   if($this->LoginModel->can_login($username, $password))  
+				   if($this->LoginModel->can_login($email, $password))  
 				   {  
-					   	$session_data = array('first_name' => $username);  	 
+					   	$session_data = array('email' => $email);  	 
 						$this->session->set_userdata($session_data);  
+						// $cookie_name = "user";
+						// $cookie_value = "Alex Porter";
+						setcookie($email, $password, time(60), "/");
+						if(!isset($_COOKIE[$email])) {
+							echo "Cookie named '" . $email . "' is not set!";
+						} else {
+							echo "Cookie '" . $email . "' is set!<br>";
+							echo "Value is: " . $_COOKIE[$email];
+						}
 						redirect(base_url() . 'index.php/Login/enter'); 
-						
 								
 				   }     
 				   else  
 				   {  
-						$this->session->set_flashdata('error', 'Invalid Username and Password');  
+						$this->session->set_flashdata('error', 'Invalid email and Password');  
 						redirect(base_url() . 'index.php/Login/userlogin');  
 				   }  
 			  }  
@@ -58,9 +66,9 @@ class Login extends CI_Controller {
 			  }  
 		 }  
 		 public function enter(){  
-			  if($this->session->userdata('first_name') != '')  
+			  if($this->session->userdata('email') != '')  
 			  {  	 
-				//    echo '<h2>Welcome - '.$this->session->userdata('first_name').'</h2>';  
+				//    echo '<h2>Welcome - '.$this->session->userdata('email').'</h2>';  
 				//    echo '<label><a href="'.base_url() . 'index.php/Login/logout">Logout</a></label>'; 
 					
 					redirect(base_url() . 'index.php/Dashboard/index');
@@ -74,7 +82,7 @@ class Login extends CI_Controller {
 			public function logout()  
 			{  
 				
-				$this->session->unset_userdata('first_name');  
+				$this->session->unset_userdata('email');  
 			 
 				redirect(base_url() . 'index.php/Login/userlogin');  
 			} 

@@ -5,16 +5,16 @@
     // $this->load->library('session');
 
     $base=$this->config->item('base_url');
-    $username=$this->session->userdata('first_name');
-      if($username){
+    $email=$this->session->userdata('email');
+      if($email){
        
       }
       else{
        redirect(base_url() .'index.php/Login/userlogin');
        }
 
-      // $cookie = $this->input->set_cookie('xyz','$username', '60');
-      // if($cookie){
+      // $cookie = $this->input->set_cookie('xyz','$email', '60');
+      // if(!isset($_COOKIE[$cookie_name])){
       //       //  $data = array( 'message' => 'cookie successfully set');
       //        redirect(base_url() . 'index.php/Dashboard/index');
       //     }

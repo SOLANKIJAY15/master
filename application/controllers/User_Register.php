@@ -1,4 +1,3 @@
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -98,14 +97,8 @@ class User_Register extends CI_Controller
 
 	   if($this->form_validation->run() === TRUE)
 	   {
-<<<<<<< HEAD
 			if(isset($_POST['save'])){ 
 				
-=======
-			if(isset($_POST)){ 
-			// 	  print_r($_POST);
-            // exit;
->>>>>>> 2624b000ff7eccfdd63ac74c04eccee9fb5b6caa
 				$this->RegisterModel->add_register($_POST);
 				$this->session->set_flashdata('sucess','yes');
 				redirect(base_url().'index.php/Dashboard/index');
