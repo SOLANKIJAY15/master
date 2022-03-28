@@ -119,11 +119,11 @@
                     </div>
                     <div class="col-md-3">
                         <div class="user">
-                            <a href="<?php echo $base.'Wish_list/wishlist';?>" class="btn wishlist">
+                            <a href="<?php echo $base.'index.php/Wish_list/wishlist';?>" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
                                 <span>(0)</span>
                             </a>
-                            <a href="<?php echo $base.'Cart/crt';?>" class="btn cart">
+                            <a href="<?php echo $base.'index.php/Cart/crt';?>" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
                             </a>

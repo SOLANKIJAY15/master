@@ -12,8 +12,8 @@ class Login extends CI_Controller {
 	// {
 	// 	$this->load->view('login.php');
 	// }
-
-		 //functions  
+		
+		//functions  
 		//  function login()  
 		 public function userlogin()  
 		 {  
@@ -22,9 +22,7 @@ class Login extends CI_Controller {
 			  $data['first_name'] = 'CodeIgniter Simple Login Form With Sessions';  
 			  $this->load->view("login", $data);  
 		 }  
-
-
-		 
+	 
 		public function login_validation()  
 		 {  
 			  $this->load->library('form_validation');  
@@ -40,12 +38,12 @@ class Login extends CI_Controller {
 				   $this->load->model('LoginModel');  
 				   if($this->LoginModel->can_login($username, $password))  
 				   {  
-
-						$session_data = array('first_name' => $username);  
+					   	$session_data = array('first_name' => $username);  	 
 						$this->session->set_userdata($session_data);  
 						redirect(base_url() . 'index.php/Login/enter'); 
 						
-				   }  
+								
+				   }     
 				   else  
 				   {  
 						$this->session->set_flashdata('error', 'Invalid Username and Password');  
@@ -61,14 +59,11 @@ class Login extends CI_Controller {
 		 }  
 		 public function enter(){  
 			  if($this->session->userdata('first_name') != '')  
-			  {  
-				 
+			  {  	 
 				//    echo '<h2>Welcome - '.$this->session->userdata('first_name').'</h2>';  
 				//    echo '<label><a href="'.base_url() . 'index.php/Login/logout">Logout</a></label>'; 
-				 
-				redirect(base_url() . 'index.php/Dashboard/index');
-				
-				   
+					
+					redirect(base_url() . 'index.php/Dashboard/index');
 			  }  
 			  else  
 			  {  	
@@ -83,17 +78,10 @@ class Login extends CI_Controller {
 			 
 				redirect(base_url() . 'index.php/Login/userlogin');  
 			} 
-
-
-
- 
-				
+		
 				// public function cookie() { 
 				// 	set_cookie('Himanshu','user','-60'); 
 				// 	$this->load->view('Cookie_view'); 
-				//  } 
-		  
-		  
-			 
+				//  } 			 
 }
 ?>

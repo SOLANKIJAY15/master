@@ -75,7 +75,7 @@ include("header.php");?>
                
                 <form method="POST" action="<?php echo $base.'index.php/Login/login_validation';?>"> 
                  <div class="form-outline mb-4">
-                 <label class="form-label" for="form2Example11">Admin Name</label>
+                 <label class="form-label" for="form2Example11">User Name</label>
                     <input type="type"  name="first_name" id="form2Example11" class="form-control" placeholder="Please Enter Your Name"/>
                     
                     <span class="text-danger"><?php echo form_error('first_name'); ?></span> 
